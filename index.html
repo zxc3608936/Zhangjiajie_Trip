@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星動張家界 8 日遊 - 尊爵導覽版</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2c3e50; 
+            --secondary: #27ae60;
+            --accent: #f39c12;
+            --highlight-border: #e67e22;
+            --bg-color: #f4f6f8;
+            --text-main: #2c3e50;
+            --text-desc: #57606f;
+            --nav-height: 70px;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        /* --- Hero Header --- */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.6)), 
+                        url('https://images.unsplash.com/photo-1516903564305-33792b045de6?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;
+            color: white;
+            padding: 40px 20px 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(243, 156, 18, 0.4);
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        
+        .logo-icon { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+
+        .hero h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .hero p { color: var(--accent); font-size: 1.3rem; margin-top: 15px; font-weight: 500; }
+
+        /* 倒數計時器 */
+        .countdown-container {
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 15px 40px;
+            display: inline-flex;
+            gap: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        .countdown-item { display: flex; flex-direction: column; align-items: center; }
+        .countdown-number { font-size: 2.2rem; font-weight: 700; color: #fff; line-height: 1; text-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .countdown-label { font-size: 0.9rem; color: var(--accent); margin-top: 5px; letter-spacing: 1px; }
+
+        /* 聯絡人 */
+        .contact-box {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 25px;
+            font-size: 1rem; color: white;
+        }
+        .contact-item { background: rgba(0,0,0,0.4); padding: 8px 20px; border-radius: 50px; display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.1); }
+        .contact-icon { color: var(--accent); margin-right: 10px; font-weight: bold; }
+        .contact-phone { color: #fff; font-weight: 700; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.5); transition: color 0.3s; }
+        .contact-phone:hover { color: var(--accent); }
+
+        /* --- Sticky Nav --- */
+        .sticky-nav {
+            position: sticky; top: 15px; z-index: 1000;
+            width: 95%; max-width: 900px; margin: -50px auto 40px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px); border-radius: 50px;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            display: flex; overflow-x: auto; gap: 5px;
+            scrollbar-width: none;
+        }
+        .sticky-nav::-webkit-scrollbar { display: none; }
+        .nav-btn {
+            flex: 1; text-align: center; color: var(--text-main); text-decoration: none;
+            padding: 12px 0; border-radius: 30px; font-size: 0.95rem; font-weight: 700;
+            transition: all 0.3s; white-space: nowrap; min-width: 70px;
+        }
+        .nav-btn:hover { background-color: #ecf0f1; color: var(--secondary); }
+        .nav-btn.active-day { background-color: var(--secondary); color: white; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4); }
+
+        /* --- Container --- */
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+        /* --- Info Cards --- */
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 50px; }
+        @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } }
+        
+        .card {
+            background: white; border-radius: 20px; padding: 30px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05); border-top: 5px solid var(--secondary);
+        }
+        .card h3 { margin: 0 0 20px 0; color: var(--primary); font-size: 1.2rem; display: flex; align-items: center; border-bottom: 2px solid #f1f1f1; padding-bottom: 15px; }
+        
+        /* --- Day Card Styles --- */
+        .day-card {
+            background: white; border-radius: 24px; margin-bottom: 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08); overflow: hidden;
+            transition: transform 0.3s ease; border: 2px solid transparent;
+        }
+        
+        /* 今日高亮 */
+        .day-card.today { border-color: var(--highlight-border); transform: scale(1.02); box-shadow: 0 20px 60px rgba(230, 126, 34, 0.25); }
+        .today-badge { position: absolute; top: 20px; right: 20px; background: #e74c3c; color: white; padding: 8px 20px; border-radius: 30px; font-weight: bold; font-size: 0.9rem; z-index: 10; box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4); display: none; }
+        .day-card.today .today-badge { display: block; }
+
+        /* Image Header */
+        .day-image-container { height: 250px; overflow: hidden; position: relative; }
+        .day-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .day-card:hover .day-image { transform: scale(1.05); }
+        .day-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); height: 100px; pointer-events: none; }
+
+        .day-content { padding: 35px; }
+
+        .day-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; border-bottom: 2px solid #f1f1f1; padding-bottom: 20px; }
+        .day-title { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin: 0; line-height: 1.3; }
+        .day-date { color: white; background-color: var(--secondary); font-weight: 600; font-size: 1rem; padding: 6px 15px; border-radius: 50px; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3); }
+
+        /* Detailed Itinerary List */
+        .itinerary-list { list-style: none; padding: 0; margin: 0 0 30px 0; }
+        .itinerary-item { 
+            margin-bottom: 20px; padding-left: 25px; position: relative; 
+        }
+        .itinerary-item::before {
+            content: ''; position: absolute; left: 0; top: 10px; width: 12px; height: 12px;
+            background: var(--accent); border-radius: 50%; box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.2);
+        }
+        .itinerary-item::after {
+            content: ''; position: absolute; left: 5px; top: 25px; bottom: -25px; width: 2px; background: #eee; z-index: 0;
+        }
+        .itinerary-item:last-child::after { display: none; }
+
+        .spot-name { font-weight: 700; font-size: 1.15rem; color: var(--primary); display: block; margin-bottom: 5px; }
+        .spot-desc { color: var(--text-desc); font-size: 0.95rem; margin: 0; text-align: justify; }
+        .tag { display: inline-block; background: #ff7675; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle; font-weight: normal; transform: translateY(-2px); }
+
+        /* Hotel Info Block */
+        .hotel-block {
+            background: #eafaf1; border-radius: 12px; padding: 15px 20px; margin-bottom: 20px;
+            display: flex; align-items: center; border-left: 5px solid var(--secondary);
+        }
+        .hotel-label { font-weight: 700; color: var(--secondary); margin-right: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+        .hotel-val { font-weight: 600; color: var(--primary); font-size: 1.05rem; }
+
+        /* Meals Section */
+        .meals-container {
+            background-color: #fdfbf7; border-radius: 16px; padding: 25px;
+            border: 1px solid #fae5d3;
+        }
+        .meals-title { font-size: 0.9rem; font-weight: 700; color: #d35400; margin-bottom: 15px; display: block; text-transform: uppercase; letter-spacing: 1px; }
+        .meals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        @media (max-width: 600px) { .meals-grid { grid-template-columns: 1fr; gap: 15px; } }
+
+        .meal-item { display: flex; align-items: center; font-size: 0.95rem; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .meal-icon { font-size: 1.2rem; margin-right: 10px; }
+        .meal-text { color: var(--text-main); font-weight: 600; }
+        .meal-text.upgrade { color: #e74c3c; }
+
+        /* Back to top */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 20px;
+            background: var(--primary); color: white;
+            width: 55px; height: 55px; border-radius: 50%; border: none;
+            font-size: 24px; cursor: pointer; opacity: 0; pointer-events: none;
+            transition: all 0.3s; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+        }
+        #backToTop:hover { background-color: var(--secondary); transform: translateY(-5px); }
+        #backToTop.show { opacity: 1; pointer-events: all; }
+
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="brand-logo">
+            <i class="fa-solid fa-mountain-sun logo-icon"></i>
+        </div>
+
+        <h1>星動張家界 8 日遊</h1>
+        <p>✨ VIP 尊爵體驗．無購物．五星住宿 ✨</p>
+        
+        <div id="countdown-wrapper">
+            <div id="countdown-display" class="countdown-container">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">天</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">時</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">分</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">秒</span>
+                </div>
+            </div>
+            <div id="trip-status" style="font-size: 1.8rem; font-weight: bold; margin: 30px 0; display:none; color: var(--accent); text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                ✈️ 旅程進行中！
+            </div>
+        </div>
+
+        <div class="contact-box">
+            <div class="contact-item">
+                <span class="contact-icon">導</span> 隨團人員：胡宜 小姐 <a href="tel:0918776707" class="contact-phone">0918-776-707</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">機</span> 送機人員：蕭譜軒 (一航) <a href="tel:0928251747" class="contact-phone">0928-251-747</a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sticky-nav">
+        <a href="#d1" class="nav-btn" id="btn-d1">D1 出發</a>
+        <a href="#d2" class="nav-btn" id="btn-d2">D2 常德</a>
+        <a href="#d3" class="nav-btn" id="btn-d3">D3 鳳凰</a>
+        <a href="#d4" class="nav-btn" id="btn-d4">D4 古城</a>
+        <a href="#d5" class="nav-btn" id="btn-d5">D5 天門</a>
+        <a href="#d6" class="nav-btn" id="btn-d6">D6 仙境</a>
+        <a href="#d7" class="nav-btn" id="btn-d7">D7 長沙</a>
+        <a href="#d8" class="nav-btn" id="btn-d8">D8 回程</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="info-grid">
+            <div class="card">
+                <h3>✈️ 航班資訊</h3>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px;">
+                    <div>
+                        <span style="font-weight: 700; color: var(--primary); font-size: 1.1rem;">11/24 去程</span><br>
+                        <span style="color: #7f8c8d; font-size: 0.9rem;">桃園 ➔ 澳門</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700;">JX-201</span><br>
+                        <span style="color: var(--secondary);">08:35 / 10:35</span>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div>
+                        <span style="font-weight: 700; color: var(--primary); font-size: 1.1rem;">12/01 回程</span><br>
+                        <span style="color: #7f8c8d; font-size: 0.9rem;">澳門 ➔ 桃園</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700;">JX-206</span><br>
+                        <span style="color: var(--secondary);">20:35 / 22:25</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>🏨 住宿重點</h3>
+                <ul style="padding-left: 20px; margin: 0; color: var(--text-desc);">
+                    <li style="margin-bottom: 8px;"><strong>長沙</strong>：希爾頓歡朋月亮島店 (2晚) <span style="font-size: 0.8rem; background: #f1c40f; color: #fff; padding: 1px 5px; border-radius: 3px;">升等</span></li>
+                    <li style="margin-bottom: 8px;"><strong>常德</strong>：澤雲大酒店</li>
+                    <li style="margin-bottom: 8px;"><strong>鳳凰</strong>：鳳鳴天下國際酒店</li>
+                    <li><strong>張家界</strong>：戴斯溫德姆系列 (3晚)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="d1" class="day-card" data-date="2025-11-24">
+            <div class="today-badge">📍 今日行程</div>
+            <div class="day-image-container">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop" alt="Travel Start" class="day-image">
+                <div class="day-overlay"></div>
+            </div>
+            <div class="day-content">
+                <div class="day-header">
+                    <h2 class="day-title">桃園 ➔ 澳門 ➔ 珠海 ➔ 長沙</h2>
+                    <span class="day-date">11/24 (一)</span>
+                </div>
+                
+                <ul class="itinerary-list">
+                    <li class="itinerary-item">
+                        <span class="spot-name">05:30 集合</span>
+                        <p class="spot-desc">請於桃園國際機場第一航廈「星宇航空」團體櫃檯集合，準備搭機。請務必攜帶護照與台胞證。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">搭機前往澳門 (JX-201)</span>
+                        <p class="spot-desc">飛往東方蒙地卡羅「澳門」，隨後經珠海搭乘動車前往「星城」長沙。動車上禁止攜帶水果刀等銳利物品。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">長沙簡介</span>
+                        <p class="spot-desc">湖南省會，政治、經濟、文化中心，今晚入住月亮島希爾頓歡朋酒店。</p>
+                    </li>
+                </ul>
+                
+                <div class="hotel-block">
+                    <span class="hotel-label">入住飯店</span>
+                    <span class="hotel-val">希爾頓歡朋月亮島店</span>
+                </div>
+
+                <div class="meals-container">
+                    <span class="meals-title">🍽️ 當日餐食</span>
+                    <div class="meals-grid">
+                        <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">敬請自理</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">粵菜風味 (50RMB)</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">湘菜風味 (50RMB)</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="d2" class="day-card" data-date="2025-11-25">
+            <div class="today-badge">📍 今日行程</div>
+            <div class="day-image-container">
+                <img src="https://images.unsplash.com/photo-1599571508046-4643f579c246?q=80&w=2070&auto=format&fit=crop" alt="Changsha Culture" class="day-image">
+                <div class="day-overlay"></div>
+            </div>
+            <div class="day-content">
+                <div class="day-header">
+                    <h2 class="day-title">長沙 ➔ 常德 (人文水鄉)</h2>
+                    <span class="day-date">11/25 (二)</span>
+                </div>
+                <ul class="itinerary-list">
+                    <li class="itinerary-item">
+                        <span class="spot-name">長沙簡牘博物館</span>
+                        <p class="spot-desc">中國唯一集簡牘保護研究的專題博物館，採三國高臺建築風格，收藏15萬餘件文物。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">橘子洲頭 (含電瓶車)</span>
+                        <p class="spot-desc">被稱為「中國第一洲」，四面環水，不僅風景清幽，更是古代詩人鍾愛之地。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">常德：柳葉湖與詩牆</span>
+                        <p class="spot-desc">遊覽形似柳葉的中國最大城市湖泊之一；參觀獲金氏紀錄「世界最長詩書畫刻藝術牆」，集當代名家詩詞書法於一體。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">德國小鎮與穿紫河</span>
+                        <p class="spot-desc">體驗原汁原味的德式建築街區，並漫步於千年古運河「穿紫河」畔，感受紫菱如錦的意境。</p>
+                    </li>
+                </ul>
+
+                <div class="hotel-block">
+                    <span class="hotel-label">入住飯店</span>
+                    <span class="hotel-val">常德澤雲大酒店</span>
+                </div>
+
+                <div class="meals-container">
+                    <span class="meals-title">🍽️ 當日餐食</span>
+                    <div class="meals-grid">
+                        <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">長沙風味 (50RMB)</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">農家菜 (50RMB)</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="d3" class="day-card" data-date="2025-11-26">
+            <div class="today-badge">📍 今日行程</div>
+            <div class="day-image-container">
+                <img src="https://images.unsplash.com/photo-1568432988733-7269d2a6247e?q=80&w=2026&auto=format&fit=crop" alt="Fenghuang" class="day-image">
+                <div class="day-overlay"></div>
+            </div>
+            <div class="day-content">
+                <div class="day-header">
+                    <h2 class="day-title">常德 ➔ 鳳凰古城 (湘西明珠)</h2>
+                    <span class="day-date">11/26 (三)</span>
+                </div>
+                <ul class="itinerary-list">
+                    <li class="itinerary-item">
+                        <span class="spot-name">桃花源古鎮</span>
+                        <p class="spot-desc">展現陶淵明隱世文化的大型人文主題建築群，位於魚米之鄉常德，重現《桃花源記》場景。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">鳳凰古城巡禮</span>
+                        <p class="spot-desc">中國最美小城。參觀沈從文故居（南方典型的四合院）、萬壽宮（雕琢玲瓏的殿宇樓臺）。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">贈送：沱江泛舟</span>
+                        <p class="spot-desc">乘船遊覽沱江，體驗水上威尼斯的浪漫氣氛，欣賞兩岸極富苗族特色的吊腳樓群。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">鳳凰夜景</span>
+                        <p class="spot-desc">夜間的鳳凰燈火輝煌，流光溢彩，倒映在沱江之中，如夢似幻，是攝影愛好者的天堂。</p>
+                    </li>
+                </ul>
+
+                <div class="hotel-block">
+                    <span class="hotel-label">入住飯店</span>
+                    <span class="hotel-val">鳳鳴天下國際酒店</span>
+                </div>
+
+                <div class="meals-container">
+                    <span class="meals-title">🍽️ 當日餐食</span>
+                    <div class="meals-grid">
+                        <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">苗家風味 (50RMB)</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">酒店合菜 (50RMB)</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="d4" class="day-card" data-date="2025-11-27">
+            <div class="today-badge">📍 今日行程</div>
+            <div class="day-image-container">
+                <img src="https://images.unsplash.com/photo-1512813195386-6cf811ad3542?q=80&w=2070&auto=format&fit=crop" alt="Waterfall Town" class="day-image">
+                <div class="day-overlay"></div>
+            </div>
+            <div class="day-content">
+                <div class="day-header">
+                    <h2 class="day-title">鳳凰 ➔ 芙蓉鎮 ➔ 張家界</h2>
+                    <span class="day-date">11/27 (四)</span>
+                </div>
+                <ul class="itinerary-list">
+                    <li class="itinerary-item">
+                        <span class="spot-name">漫步鳳凰古城</span>
+                        <p class="spot-desc">走過青石板街，登上東門城樓與北門城樓，穿越歷史悠久的虹橋風雨樓，感受古城晨間的霧氣。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">芙蓉鎮 (含電瓶車+遊船)</span>
+                        <p class="spot-desc">原名王村，掛在瀑布上的千年古鎮，因電影《芙蓉鎮》而聞名，擁有宏偉瀑布穿鎮而過。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">張家界 72 奇樓</span>
+                        <p class="spot-desc">全世界最高的沖天吊腳樓，高109.9米，體驗夜景燈光秀與篝火晚會，如夢似幻的視覺饗宴。</p>
+                    </li>
+                </ul>
+
+                <div class="hotel-block">
+                    <span class="hotel-label">入住飯店</span>
+                    <span class="hotel-val">張家界戴斯溫德姆</span>
+                </div>
+
+                <div class="meals-container">
+                    <span class="meals-title">🍽️ 當日餐食</span>
+                    <div class="meals-grid">
+                        <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">血粑鴨 (50RMB)</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">華宴樓 (50RMB)</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="d5" class="day-card" data-date="2025-11-28">
+            <div class="today-badge">📍 今日行程</div>
+            <div class="day-image-container">
+                <img src="https://images.unsplash.com/photo-1504235888440-da641c78503c?q=80&w=2070&auto=format&fit=crop" alt="Tianmen Mountain" class="day-image">
+                <div class="day-overlay"></div>
+            </div>
+            <div class="day-content">
+                <div class="day-header">
+                    <h2 class="day-title">張家界 (天門山絕景)</h2>
+                    <span class="day-date">11/28 (五)</span>
+                </div>
+                <ul class="itinerary-list">
+                    <li class="itinerary-item">
+                        <span class="spot-name">天門山國家森林公園 (含纜車)</span>
+                        <p class="spot-desc">搭乘世界最長高山客運索道 (7500公尺)，俯瞰通天大道（天下第一公路奇觀）與絕壁千仞。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">天空之路：玻璃棧道與鬼谷棧道</span>
+                        <p class="spot-desc">挑戰懸於峭壁之上的透明玻璃棧道（含鞋套），以及全線立於萬丈懸崖中間的鬼谷棧道，體驗雲端漫步。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">天門洞 (含穿山扶梯)</span>
+                        <p class="spot-desc">世界海拔最高的天然穿山溶洞，高131.5米，被視為直達天庭的門戶，氣勢磅礡。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">黃龍洞 (VIP禮遇)</span>
+                        <p class="spot-desc">中國最大溶洞之一，安排VIP電瓶車與專屬通道，欣賞定海神針與龍宮奇景，免去排隊之苦。</p>
+                    </li>
+                </ul>
+
+                <div class="hotel-block">
+                    <span class="hotel-label">入住飯店</span>
+                    <span class="hotel-val">武陵源戴斯温德姆</span>
+                </div>
+
+                <div class="meals-container">
+                    <span class="meals-title">🍽️ 當日餐食</span>
+                    <div class="meals-grid">
+                        <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">野山菌 (50RMB)</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">酒店合菜 (50RMB)</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="d6" class="day-card" data-date="2025-11-29">
+            <div class="today-badge">📍 今日行程</div>
+            <div class="day-image-container">
+                <img src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=2787&auto=format&fit=crop" alt="Avatar Mountains" class="day-image">
+                <div class="day-overlay"></div>
+            </div>
+            <div class="day-content">
+                <div class="day-header">
+                    <h2 class="day-title">張家界 (阿凡達秘境)</h2>
+                    <span class="day-date">11/29 (六)</span>
+                </div>
+                <ul class="itinerary-list">
+                    <li class="itinerary-item">
+                        <span class="spot-name">百龍天梯 (包梯上行)</span>
+                        <p class="spot-desc">世界最高戶外電梯，88秒直達326米山頂，被譽為「東方艾菲爾鐵塔」。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">袁家界：哈利路亞懸浮山</span>
+                        <p class="spot-desc">電影《阿凡達》取景地（原名南天一柱），觀賞天下第一橋、迷魂台，體驗奇峰三千的震撼。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">天子山與賀龍公園</span>
+                        <p class="spot-desc">有「擴大的盆景」之稱，搭乘纜車下山，途中欣賞御筆鋒、西海石林，景色原始自然。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">寶峰湖 (VIP遊船)</span>
+                        <p class="spot-desc">高峽平湖絕景，世界自然遺產，乘船遊湖欣賞山水與民俗風情。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">天門狐仙秀</span>
+                        <p class="spot-desc">世界首台高山峽谷實景音樂劇，視覺特效震撼，演繹感人的人狐之戀。</p>
+                    </li>
+                </ul>
+
+                <div class="hotel-block">
+                    <span class="hotel-label">入住飯店</span>
+                    <span class="hotel-val">張家界戴斯溫德姆</span>
+                </div>
+
+                <div class="meals-container">
+                    <span class="meals-title">🍽️ 當日餐食</span>
+                    <div class="meals-grid">
+                        <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">雲上十全宴 (50RMB)</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">鄉里土菜 (50RMB)</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="d7" class="day-card" data-date="2025-11-30">
+            <div class="today-badge">📍 今日行程</div>
+            <div class="day-image-container">
+                <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=2070&auto=format&fit=crop" alt="Changsha Food" class="day-image">
+                <div class="day-overlay"></div>
+            </div>
+            <div class="day-content">
+                <div class="day-header">
+                    <h2 class="day-title">張家界 ➔ 長沙 (美食購物)</h2>
+                    <span class="day-date">11/30 (日)</span>
+                </div>
+                <ul class="itinerary-list">
+                    <li class="itinerary-item">
+                        <span class="spot-name">超級文和友</span>
+                        <p class="spot-desc">網紅打卡地，這座建築還原了80年代的老長沙社區場景，充滿懷舊氛圍與特色小吃。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">IFS 國金中心與步行街</span>
+                        <p class="spot-desc">長沙最繁華的地段，擁有452米高的第一高樓，彙集全國特色小吃與時尚購物。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">晚餐升等：喜庭海鮮自助火鍋</span>
+                        <p class="spot-desc">價值 158 RMB/人的特別升級，享受鮮切牛肉與海鮮美味。</p>
+                    </li>
+                </ul>
+
+                <div class="hotel-block">
+                    <span class="hotel-label">入住飯店</span>
+                    <span class="hotel-val">希爾頓歡朋月亮島店</span>
+                </div>
+
+                <div class="meals-container">
+                    <span class="meals-title">🍽️ 當日餐食</span>
+                    <div class="meals-grid">
+                        <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">發餐費 (50RMB)</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text upgrade">喜庭海鮮火鍋</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="d8" class="day-card" data-date="2025-12-01">
+            <div class="today-badge">📍 今日行程</div>
+            <div class="day-image-container">
+                <img src="https://images.unsplash.com/photo-1518972458649-b0f242a64a69?q=80&w=2070&auto=format&fit=crop" alt="Chinese Garden" class="day-image">
+                <div class="day-overlay"></div>
+            </div>
+            <div class="day-content">
+                <div class="day-header">
+                    <h2 class="day-title">長沙 ➔ 珠海 ➔ 澳門 ➔ 桃園</h2>
+                    <span class="day-date">12/01 (一)</span>
+                </div>
+                <ul class="itinerary-list">
+                    <li class="itinerary-item">
+                        <span class="spot-name">圓明新園</span>
+                        <p class="spot-desc">按1:1比例精選北京圓明園18景建造，重現皇家園林的氣勢。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">北山大院楊氏大宗祠</span>
+                        <p class="spot-desc">建於1868年，珠海最大的民間祠堂，傳聞是楊家將後人所建，古色古香。</p>
+                    </li>
+                    <li class="itinerary-item">
+                        <span class="spot-name">搭機返台 (JX-206)</span>
+                        <p class="spot-desc">前往澳門機場，搭機返回溫暖的家 (22:25 抵達桃園)。</p>
+                    </li>
+                </ul>
+
+                <div class="hotel-block">
+                    <span class="hotel-label">住宿</span>
+                    <span class="hotel-val">甜蜜溫暖的家</span>
+                </div>
+
+                <div class="meals-container">
+                    <span class="meals-title">🍽️ 當日餐食</span>
+                    <div class="meals-grid">
+                        <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">高鐵便當</span></div>
+                        <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">珠海風味 (50RMB)</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button id="backToTop" title="回到頂端">↑</button>
+
+    <script>
+        // 1. 回到頂端按鈕
+        const backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 400) backToTopBtn.classList.add("show");
+            else backToTopBtn.classList.remove("show");
+        });
+        backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // 2. 倒數計時器 & 自動標示今天行程
+        function initTravelApp() {
+            const tripStartDate = new Date("2025-11-24T05:30:00").getTime();
+            const tripEndDate = new Date("2025-12-01T23:59:59").getTime();
+            
+            const timer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = tripStartDate - now;
+
+                if (distance < 0) {
+                    document.getElementById("countdown-display").style.display = "none";
+                    const statusEl = document.getElementById('trip-status');
+                    statusEl.style.display = "block";
+                    statusEl.innerHTML = now > tripEndDate ? "🎉 旅程圓滿結束！" : "✈️ 旅程進行中！";
+                    clearInterval(timer);
+                } else {
+                    document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                    document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                    document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                    document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+                }
+            }, 1000);
+
+            // 標註當天行程
+            const today = new Date();
+            const dateStr = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+            const todayCard = document.querySelector(`.day-card[data-date="${dateStr}"]`);
+            
+            if (todayCard) {
+                todayCard.classList.add('today');
+                const navBtn = document.getElementById('btn-' + todayCard.id);
+                if (navBtn) {
+                    navBtn.classList.add('active-day');
+                    navBtn.innerHTML = "📍 " + navBtn.innerHTML;
+                    // 自動捲動到當天
+                    setTimeout(() => {
+                        const yOffset = -100; 
+                        const y = todayCard.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                    }, 500);
+                }
+            }
+        }
+
+        initTravelApp();
+    </script>
+</body>
+</html>
