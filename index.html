@@ -37,15 +37,15 @@
 
         /* --- Hero Header --- */
         .hero {
+            /* 背景圖備援機制：若圖片掛掉，顯示深色漸層 */
             background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.6)), 
                         url('https://images.unsplash.com/photo-1516903564305-33792b045de6?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;
             color: white;
-            padding: 60px 20px 120px; /* 調整 Padding */
+            padding: 60px 20px 120px;
             text-align: center;
             position: relative;
+            background-color: #2c3e50; /* Fallback color */
         }
-
-        /* Logo 樣式已移除 */
 
         .hero h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .hero p { color: var(--accent); font-size: 1.3rem; margin-top: 15px; font-weight: 500; }
@@ -134,7 +134,7 @@
         .day-card.today .today-badge { display: block; }
 
         /* Image Header */
-        .day-image-container { height: 250px; overflow: hidden; position: relative; }
+        .day-image-container { height: 250px; overflow: hidden; position: relative; background-color: #eee; }
         .day-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .day-card:hover .day-image { transform: scale(1.05); }
         .day-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); height: 100px; pointer-events: none; }
@@ -294,7 +294,7 @@
         <div id="d1" class="day-card" data-date="2025-11-24">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop" alt="Travel Start" class="day-image">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop" alt="Travel Start" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=2070'">
                 <div class="day-overlay"></div>
             </div>
             <div class="day-content">
@@ -337,7 +337,7 @@
         <div id="d2" class="day-card" data-date="2025-11-25">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1599571508046-4643f579c246?q=80&w=2070&auto=format&fit=crop" alt="Changsha Culture" class="day-image">
+                <img src="https://images.unsplash.com/photo-1563804808739-427c6433374d?q=80&w=2070&auto=format&fit=crop" alt="Changsha Culture" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2070'">
                 <div class="day-overlay"></div>
             </div>
             <div class="day-content">
@@ -349,19 +349,19 @@
                     <li class="itinerary-item">
                         <span class="spot-name">長沙簡牘博物館</span>
                         <p class="spot-desc">中國唯一集簡牘保護研究的專題博物館，採三國高臺建築風格，收藏15萬餘件文物。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">橘子洲頭 (含電瓶車)</span>
                         <p class="spot-desc">被稱為「中國第一洲」，四面環水，不僅風景清幽，更是古代詩人鍾愛之地。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">常德：柳葉湖與詩牆</span>
                         <p class="spot-desc">遊覽形似柳葉的中國最大城市湖泊之一；參觀獲金氏紀錄「世界最長詩書畫刻藝術牆」，集當代名家詩詞書法於一體。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">德國小鎮與穿紫河</span>
                         <p class="spot-desc">體驗原汁原味的德式建築街區，並漫步於千年古運河「穿紫河」畔，感受紫菱如錦的意境。</p>
-                    </li>
+                        </li>
                 </ul>
 
                 <div class="hotel-block">
@@ -383,7 +383,7 @@
         <div id="d3" class="day-card" data-date="2025-11-26">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1568432988733-7269d2a6247e?q=80&w=2026&auto=format&fit=crop" alt="Fenghuang" class="day-image">
+                <img src="https://images.unsplash.com/photo-1598890777032-bde835443c77?q=80&w=2070" alt="Fenghuang" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1568432988733-7269d2a6247e?q=80&w=2026'">
                 <div class="day-overlay"></div>
             </div>
             <div class="day-content">
@@ -395,19 +395,19 @@
                     <li class="itinerary-item">
                         <span class="spot-name">桃花源古鎮</span>
                         <p class="spot-desc">展現陶淵明隱世文化的大型人文主題建築群，位於魚米之鄉常德，重現《桃花源記》場景。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">鳳凰古城巡禮</span>
                         <p class="spot-desc">中國最美小城。參觀沈從文故居（南方典型的四合院）、萬壽宮（雕琢玲瓏的殿宇樓臺）。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">贈送：沱江泛舟</span>
                         <p class="spot-desc">乘船遊覽沱江，體驗水上威尼斯的浪漫氣氛，欣賞兩岸極富苗族特色的吊腳樓群。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">鳳凰夜景</span>
                         <p class="spot-desc">夜間的鳳凰燈火輝煌，流光溢彩，倒映在沱江之中，如夢似幻，是攝影愛好者的天堂。</p>
-                    </li>
+                        </li>
                 </ul>
 
                 <div class="hotel-block">
@@ -429,7 +429,7 @@
         <div id="d4" class="day-card" data-date="2025-11-27">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1512813195386-6cf811ad3542?q=80&w=2070&auto=format&fit=crop" alt="Waterfall Town" class="day-image">
+                <img src="https://images.unsplash.com/photo-1512813195386-6cf811ad3542?q=80&w=2070&auto=format&fit=crop" alt="Waterfall Town" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1533555760832-2531482c41cc?q=80&w=2070'">
                 <div class="day-overlay"></div>
             </div>
             <div class="day-content">
@@ -445,11 +445,11 @@
                     <li class="itinerary-item">
                         <span class="spot-name">芙蓉鎮 (含電瓶車+遊船)</span>
                         <p class="spot-desc">原名王村，掛在瀑布上的千年古鎮，因電影《芙蓉鎮》而聞名，擁有宏偉瀑布穿鎮而過。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">張家界 72 奇樓</span>
                         <p class="spot-desc">全世界最高的沖天吊腳樓，高109.9米，體驗夜景燈光秀與篝火晚會，如夢似幻的視覺饗宴。</p>
-                    </li>
+                        </li>
                 </ul>
 
                 <div class="hotel-block">
@@ -471,7 +471,7 @@
         <div id="d5" class="day-card" data-date="2025-11-28">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1504235888440-da641c78503c?q=80&w=2070&auto=format&fit=crop" alt="Tianmen Mountain" class="day-image">
+                <img src="https://images.unsplash.com/photo-1631614827523-237366b43722?q=80&w=2070" alt="Tianmen Mountain" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1504235888440-da641c78503c?q=80&w=2070'">
                 <div class="day-overlay"></div>
             </div>
             <div class="day-content">
@@ -483,19 +483,19 @@
                     <li class="itinerary-item">
                         <span class="spot-name">天門山國家森林公園 (含纜車)</span>
                         <p class="spot-desc">搭乘世界最長高山客運索道 (7500公尺)，俯瞰通天大道（天下第一公路奇觀）與絕壁千仞。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天空之路：玻璃棧道與鬼谷棧道</span>
                         <p class="spot-desc">挑戰懸於峭壁之上的透明玻璃棧道（含鞋套），以及全線立於萬丈懸崖中間的鬼谷棧道，體驗雲端漫步。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天門洞 (含穿山扶梯)</span>
                         <p class="spot-desc">世界海拔最高的天然穿山溶洞，高131.5米，被視為直達天庭的門戶，氣勢磅礡。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">黃龍洞 (VIP禮遇)</span>
                         <p class="spot-desc">中國最大溶洞之一，安排VIP電瓶車與專屬通道，欣賞定海神針與龍宮奇景，免去排隊之苦。</p>
-                    </li>
+                        </li>
                 </ul>
 
                 <div class="hotel-block">
@@ -517,7 +517,7 @@
         <div id="d6" class="day-card" data-date="2025-11-29">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=2787&auto=format&fit=crop" alt="Avatar Mountains" class="day-image">
+                <img src="https://images.unsplash.com/photo-1470075801209-17f9ec0cade6?q=80&w=1976&auto=format&fit=crop" alt="Avatar Mountains" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=2070'">
                 <div class="day-overlay"></div>
             </div>
             <div class="day-content">
@@ -529,23 +529,23 @@
                     <li class="itinerary-item">
                         <span class="spot-name">百龍天梯 (包梯上行)</span>
                         <p class="spot-desc">世界最高戶外電梯，88秒直達326米山頂，被譽為「東方艾菲爾鐵塔」。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">袁家界：哈利路亞懸浮山</span>
                         <p class="spot-desc">電影《阿凡達》取景地（原名南天一柱），觀賞天下第一橋、迷魂台，體驗奇峰三千的震撼。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天子山與賀龍公園</span>
                         <p class="spot-desc">有「擴大的盆景」之稱，搭乘纜車下山，途中欣賞御筆鋒、西海石林，景色原始自然。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">寶峰湖 (VIP遊船)</span>
                         <p class="spot-desc">高峽平湖絕景，世界自然遺產，乘船遊湖欣賞山水與民俗風情。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天門狐仙秀</span>
                         <p class="spot-desc">世界首台高山峽谷實景音樂劇，視覺特效震撼，演繹感人的人狐之戀。</p>
-                    </li>
+                        </li>
                 </ul>
 
                 <div class="hotel-block">
@@ -567,7 +567,7 @@
         <div id="d7" class="day-card" data-date="2025-11-30">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=2070&auto=format&fit=crop" alt="Changsha Food" class="day-image">
+                <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=2070&auto=format&fit=crop" alt="Changsha Food" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070'">
                 <div class="day-overlay"></div>
             </div>
             <div class="day-content">
@@ -579,15 +579,15 @@
                     <li class="itinerary-item">
                         <span class="spot-name">超級文和友</span>
                         <p class="spot-desc">網紅打卡地，這座建築還原了80年代的老長沙社區場景，充滿懷舊氛圍與特色小吃。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">IFS 國金中心與步行街</span>
                         <p class="spot-desc">長沙最繁華的地段，擁有452米高的第一高樓，彙集全國特色小吃與時尚購物。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">晚餐升等：喜庭海鮮自助火鍋</span>
                         <p class="spot-desc">價值 158 RMB/人的特別升級，享受鮮切牛肉與海鮮美味。</p>
-                    </li>
+                        </li>
                 </ul>
 
                 <div class="hotel-block">
@@ -609,7 +609,7 @@
         <div id="d8" class="day-card" data-date="2025-12-01">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1518972458649-b0f242a64a69?q=80&w=2070&auto=format&fit=crop" alt="Chinese Garden" class="day-image">
+                <img src="https://images.unsplash.com/photo-1518972458649-b0f242a64a69?q=80&w=2070&auto=format&fit=crop" alt="Chinese Garden" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1582653380436-988a9fa93690?q=80&w=2070'">
                 <div class="day-overlay"></div>
             </div>
             <div class="day-content">
@@ -621,15 +621,15 @@
                     <li class="itinerary-item">
                         <span class="spot-name">圓明新園</span>
                         <p class="spot-desc">按1:1比例精選北京圓明園18景建造，重現皇家園林的氣勢。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">北山大院楊氏大宗祠</span>
                         <p class="spot-desc">建於1868年，珠海最大的民間祠堂，傳聞是楊家將後人所建，古色古香。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">搭機返台 (JX-206)</span>
                         <p class="spot-desc">前往澳門機場，搭機返回溫暖的家 (22:25 抵達桃園)。</p>
-                    </li>
+                        </li>
                 </ul>
 
                 <div class="hotel-block">
