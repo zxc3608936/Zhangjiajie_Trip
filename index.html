@@ -21,6 +21,11 @@
             --text-main: #2c3e50;
             --text-desc: #57606f;
             --nav-height: 60px;
+            
+            /* 餐食標籤顏色 */
+            --tag-bf: #f1c40f; /* 早餐黃 */
+            --tag-lh: #e67e22; /* 午餐橘 */
+            --tag-dn: #d35400; /* 晚餐紅 */
         }
 
         html { scroll-behavior: smooth; scroll-padding-top: 140px; }
@@ -36,7 +41,6 @@
 
         /* --- Hero Header --- */
         .hero {
-            /* 請確保 header.jpg 也在資料夾內 */
             background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.5)), 
                         url('header.jpg') center/cover no-repeat fixed;
             color: white;
@@ -116,7 +120,6 @@
         .flight-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
         .flight-title { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
         
-        /* FlightAware Button */
         .flight-code { 
             background: #002F5D; color: #fff; padding: 4px 12px; border-radius: 20px; 
             font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; 
@@ -206,9 +209,23 @@
         .hotel-phone { font-size: 0.9rem; color: var(--text-desc); margin-top: 2px; display: flex; align-items: center; gap: 5px; }
         .hotel-phone a { text-decoration: none; color: var(--secondary); font-weight: bold; }
 
+        /* 餐食樣式優化 */
         .meals-grid { display: grid; grid-template-columns: 1fr; gap: 8px; } 
-        .meal-item { display: flex; align-items: center; font-size: 0.9rem; background: white; padding: 8px; border-radius: 6px; border: 1px solid #eee; }
-        .meal-icon { font-size: 1.1rem; margin-right: 10px; width: 25px; text-align: center; }
+        .meal-item { 
+            display: flex; align-items: center; font-size: 0.9rem; 
+            background: white; padding: 8px; border-radius: 6px; 
+            border: 1px solid #eee; 
+        }
+        
+        .meal-tag {
+            font-size: 0.75rem; font-weight: bold; color: white;
+            padding: 2px 8px; border-radius: 4px; margin-right: 10px;
+            min-width: 30px; text-align: center;
+        }
+        .tag-bf { background-color: var(--tag-bf); }
+        .tag-ln { background-color: var(--tag-lh); }
+        .tag-dn { background-color: var(--tag-dn); }
+
         .meal-text { color: var(--text-main); font-weight: 500; }
         .meal-text.upgrade { color: #e74c3c; font-weight: 700; }
 
@@ -381,9 +398,9 @@
                 </div>
 
                 <div class="meals-grid">
-                    <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">敬請自理</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">粵菜風味 (50RMB)</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">湘菜風味 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-bf">早餐</span><span class="meal-text">敬請自理</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-ln">午餐</span><span class="meal-text">粵菜風味 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-dn">晚餐</span><span class="meal-text">湘菜風味 (50RMB)</span></div>
                 </div>
             </div>
         </div>
@@ -425,9 +442,9 @@
                 </div>
 
                 <div class="meals-grid">
-                    <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">長沙風味 (50RMB)</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">農家菜 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-bf">早餐</span><span class="meal-text">飯店內享用</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-ln">午餐</span><span class="meal-text">長沙風味 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-dn">晚餐</span><span class="meal-text">農家菜 (50RMB)</span></div>
                 </div>
             </div>
         </div>
@@ -469,9 +486,9 @@
                 </div>
 
                 <div class="meals-grid">
-                    <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">苗家風味 (50RMB)</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">酒店合菜 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-bf">早餐</span><span class="meal-text">飯店內享用</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-ln">午餐</span><span class="meal-text">苗家風味 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-dn">晚餐</span><span class="meal-text">酒店合菜 (50RMB)</span></div>
                 </div>
             </div>
         </div>
@@ -509,9 +526,9 @@
                 </div>
 
                 <div class="meals-grid">
-                    <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">血粑鴨 (50RMB)</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">華宴樓 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-bf">早餐</span><span class="meal-text">飯店內享用</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-ln">午餐</span><span class="meal-text">血粑鴨 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-dn">晚餐</span><span class="meal-text">華宴樓 (50RMB)</span></div>
                 </div>
             </div>
         </div>
@@ -553,9 +570,9 @@
                 </div>
 
                 <div class="meals-grid">
-                    <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">野山菌 (50RMB)</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">酒店合菜 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-bf">早餐</span><span class="meal-text">飯店內享用</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-ln">午餐</span><span class="meal-text">野山菌 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-dn">晚餐</span><span class="meal-text">酒店合菜 (50RMB)</span></div>
                 </div>
             </div>
         </div>
@@ -601,9 +618,9 @@
                 </div>
 
                 <div class="meals-grid">
-                    <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">雲上十全宴 (50RMB)</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">鄉里土菜 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-bf">早餐</span><span class="meal-text">飯店內享用</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-ln">午餐</span><span class="meal-text">雲上十全宴 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-dn">晚餐</span><span class="meal-text">鄉里土菜 (50RMB)</span></div>
                 </div>
             </div>
         </div>
@@ -641,9 +658,9 @@
                 </div>
 
                 <div class="meals-grid">
-                    <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">發餐費 (50RMB)</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text upgrade">喜庭海鮮火鍋</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-bf">早餐</span><span class="meal-text">飯店內享用</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-ln">午餐</span><span class="meal-text">發餐費 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-dn">晚餐</span><span class="meal-text upgrade">喜庭海鮮火鍋</span></div>
                 </div>
             </div>
         </div>
@@ -680,9 +697,9 @@
                 </div>
 
                 <div class="meals-grid">
-                    <div class="meal-item"><span class="meal-icon">🍳</span><span class="meal-text">飯店內享用</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥢</span><span class="meal-text">高鐵便當</span></div>
-                    <div class="meal-item"><span class="meal-icon">🥣</span><span class="meal-text">珠海風味 (50RMB)</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-bf">早餐</span><span class="meal-text">飯店內享用</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-ln">午餐</span><span class="meal-text">高鐵便當</span></div>
+                    <div class="meal-item"><span class="meal-tag tag-dn">晚餐</span><span class="meal-text">珠海風味 (50RMB)</span></div>
                 </div>
             </div>
         </div>
