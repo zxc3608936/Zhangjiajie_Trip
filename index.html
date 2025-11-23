@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>星動張家界 8 日遊 - 手機版導覽</title>
+    <title>星動張家界 8 日遊 - 尊爵導覽版</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
 
@@ -22,10 +22,15 @@
             --bg-color: #f4f6f8;
             --text-main: #2c3e50;
             --text-desc: #57606f;
-            --nav-height: 60px;
+            --nav-height: 60px; /* 手機版導覽列高度 */
         }
 
-        html { scroll-behavior: smooth; scroll-padding-top: 130px; }
+        html { 
+            scroll-behavior: smooth; 
+            /* 修正錨點定位，避免被 Header 遮住 */
+            scroll-padding-top: 140px; 
+        }
+        
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background-color: var(--bg-color);
@@ -41,22 +46,23 @@
             background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.6)), 
                         url('https://images.unsplash.com/photo-1516903564305-33792b045de6?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;
             color: white;
-            padding: 30px 20px 80px; /* 手機版減少留白 */
+            padding: 30px 20px 80px;
             text-align: center;
             position: relative;
+            background-color: #2c3e50; /* Fallback */
         }
 
         .hero h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1px; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .hero p { color: var(--accent); font-size: 1rem; margin-top: 10px; font-weight: 500; }
 
-        /* 倒數計時器 (手機版優化) */
+        /* 倒數計時器 */
         .countdown-container {
             margin: 20px auto;
             background: rgba(255, 255, 255, 0.15);
             border-radius: 12px;
             padding: 10px 15px;
             display: inline-flex;
-            gap: 15px; /* 縮小間距 */
+            gap: 15px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
@@ -65,7 +71,7 @@
         .countdown-number { font-size: 1.5rem; font-weight: 700; color: #fff; line-height: 1; }
         .countdown-label { font-size: 0.7rem; color: var(--accent); margin-top: 4px; }
 
-        /* 聯絡人 (手機版優化：堆疊排列) */
+        /* 聯絡人 */
         .contact-box {
             display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;
             font-size: 0.9rem; color: white;
@@ -78,7 +84,7 @@
         .contact-icon { color: var(--accent); margin-right: 10px; font-weight: bold; }
         .contact-phone { color: #fff; font-weight: 700; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.5); }
 
-        /* --- Sticky Nav (手機橫向捲動優化) --- */
+        /* --- Sticky Nav --- */
         .sticky-nav {
             position: sticky; top: 10px; z-index: 1000;
             width: 92%; margin: -40px auto 20px;
@@ -88,27 +94,28 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
             display: flex; overflow-x: auto; gap: 8px;
             scrollbar-width: none;
-            scroll-snap-type: x mandatory; /* 滑動時會有磁吸效果 */
+            scroll-snap-type: x mandatory;
         }
         .sticky-nav::-webkit-scrollbar { display: none; }
         
         .nav-btn {
-            flex: 0 0 auto; /* 防止被壓縮 */
+            flex: 0 0 auto;
             text-align: center; color: var(--text-main); text-decoration: none;
             padding: 8px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 700;
             transition: all 0.3s; background: #f0f2f5;
-            scroll-snap-align: start; /* 磁吸對齊 */
+            scroll-snap-align: start;
         }
-        .nav-btn.active-day { background-color: var(--secondary); color: white; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.4); }
+        .nav-btn.active-day { 
+            background-color: var(--secondary); color: white; 
+            box-shadow: 0 4px 10px rgba(39, 174, 96, 0.4); 
+            border: 1px solid var(--secondary);
+        }
 
         /* --- Container --- */
         .container { max-width: 100%; margin: 0 auto; padding: 0 15px 80px; }
 
-        /* --- Info Cards (手機版強制單欄) --- */
-        .info-grid { 
-            display: grid; grid-template-columns: 1fr; /* 單欄 */
-            gap: 20px; margin-bottom: 30px; 
-        }
+        /* --- Info Cards --- */
+        .info-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 30px; }
         
         .card {
             background: white; border-radius: 16px; padding: 20px;
@@ -116,7 +123,6 @@
         }
         .card h3 { margin: 0 0 15px 0; color: var(--primary); font-size: 1.1rem; display: flex; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         
-        /* 航班按鈕樣式 */
         .flight-btn {
             display: inline-flex; align-items: center; justify-content: center;
             background-color: #ebfbf3; color: var(--secondary);
@@ -124,7 +130,7 @@
             text-decoration: none; font-size: 0.9rem; font-weight: 700;
             border: 1px solid var(--secondary); margin-top: 5px;
         }
-        
+
         /* --- Day Card Styles --- */
         .day-card {
             background: white; border-radius: 16px; margin-bottom: 30px;
@@ -132,11 +138,26 @@
             transition: transform 0.3s ease; border: 2px solid transparent;
         }
         
-        .day-card.today { border-color: var(--highlight-border); box-shadow: 0 10px 30px rgba(230, 126, 34, 0.2); }
-        .today-badge { position: absolute; top: 15px; right: 15px; background: #e74c3c; color: white; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; z-index: 10; display: none; }
+        /* 今日高亮動畫 */
+        @keyframes pulse-border {
+            0% { border-color: var(--highlight-border); box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.4); }
+            70% { border-color: var(--highlight-border); box-shadow: 0 0 0 10px rgba(230, 126, 34, 0); }
+            100% { border-color: var(--highlight-border); box-shadow: 0 0 0 0 rgba(230, 126, 34, 0); }
+        }
+
+        .day-card.today { 
+            border-color: var(--highlight-border); 
+            animation: pulse-border 2s infinite;
+        }
+        
+        .today-badge { 
+            position: absolute; top: 15px; right: 15px; 
+            background: #e74c3c; color: white; padding: 5px 12px; 
+            border-radius: 20px; font-weight: bold; font-size: 0.8rem; 
+            z-index: 10; display: none; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
         .day-card.today .today-badge { display: block; }
 
-        /* Image Header (手機版高度減小) */
         .day-image-container { height: 180px; overflow: hidden; position: relative; background-color: #eee; }
         .day-image { width: 100%; height: 100%; object-fit: cover; }
         .day-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.6)); height: 80px; pointer-events: none; }
@@ -162,7 +183,6 @@
         .spot-name { font-weight: 700; font-size: 1.05rem; color: var(--primary); display: block; margin-bottom: 3px; }
         .spot-desc { color: var(--text-desc); font-size: 0.9rem; margin: 0; text-align: justify; }
         
-        /* Hotel & Meals (手機版優化) */
         .hotel-block {
             background: #eafaf1; border-radius: 8px; padding: 12px; margin-bottom: 15px;
             display: flex; align-items: flex-start; flex-direction: column; border-left: 4px solid var(--secondary);
@@ -175,7 +195,6 @@
             border: 1px solid #fae5d3;
         }
         .meals-title { font-size: 0.85rem; font-weight: 700; color: #d35400; margin-bottom: 10px; display: block; }
-        /* 餐食改為單欄排列 */
         .meals-grid { display: grid; grid-template-columns: 1fr; gap: 8px; } 
 
         .meal-item { display: flex; align-items: center; font-size: 0.9rem; background: white; padding: 8px; border-radius: 6px; border: 1px solid #eee; }
@@ -183,7 +202,6 @@
         .meal-text { color: var(--text-main); font-weight: 500; }
         .meal-text.upgrade { color: #e74c3c; font-weight: 700; }
 
-        /* Back to top */
         #backToTop {
             position: fixed; bottom: 25px; right: 20px;
             background: var(--primary); color: white;
@@ -194,7 +212,7 @@
         }
         #backToTop.show { opacity: 1; pointer-events: all; }
 
-        /* 平板與桌面微調 */
+        /* Tablet/Desktop Fixes */
         @media (min-width: 768px) {
             .hero { padding: 60px 20px 120px; }
             .hero h1 { font-size: 2.5rem; }
@@ -489,7 +507,7 @@
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天空之路：玻璃棧道與鬼谷棧道</span>
-                        <p class="spot-desc">挑戰懸於峭壁之上的透明玻璃棧道（含鞋套），以及全線立於萬丈懸崖中間的鬼谷棧道，體驗雲端漫步。</p>
+                        <p class="spot-desc">挑戰懸於峭壁之上的透明玻璃棧道（含鞋套），以及全線立於萬丈懸崖中間的鬼谷棧道。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天門洞 (含穿山扶梯)</span>
@@ -666,6 +684,13 @@
 
         // 2. 倒數計時器 & 自動標示今天行程
         function initTravelApp() {
+            // =========================================
+            // 🔧 測試模式開關
+            // true = 強制顯示 2025-11-24 為今日 (方便您現在檢查)
+            // false = 依照實際日期 (出發時請改成 false)
+            const testMode = true; 
+            // =========================================
+
             const tripStartDate = new Date("2025-11-24T05:30:00").getTime();
             const tripEndDate = new Date("2025-12-01T23:59:59").getTime();
             
@@ -688,7 +713,13 @@
             }, 1000);
 
             // 標註當天行程
-            const today = new Date();
+            let today = new Date();
+            
+            // 測試模式邏輯
+            if (testMode) {
+                today = new Date("2025-11-24"); 
+            }
+
             const dateStr = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
             const todayCard = document.querySelector(`.day-card[data-date="${dateStr}"]`);
             
@@ -698,11 +729,17 @@
                 if (navBtn) {
                     navBtn.classList.add('active-day');
                     navBtn.innerHTML = "📍 " + navBtn.innerHTML;
-                    // 自動捲動到當天
+                    
+                    // 自動捲動到當天 (修正偏移量，避免被 Nav 擋住)
                     setTimeout(() => {
-                        const yOffset = -100; 
-                        const y = todayCard.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                        window.scrollTo({top: y, behavior: 'smooth'});
+                        const headerOffset = 140; 
+                        const elementPosition = todayCard.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
                     }, 500);
                 }
             }
