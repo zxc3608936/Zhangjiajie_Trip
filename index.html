@@ -37,7 +37,7 @@
         /* --- Hero Header --- */
         .hero {
             background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.5)), 
-                        url('https://images.unsplash.com/photo-1548073862-211a7667d266?q=80&w=2066&auto=format&fit=crop') center/cover no-repeat fixed;
+                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Zhangjiajie_National_Forest_Park.jpg/1280px-Zhangjiajie_National_Forest_Park.jpg') center/cover no-repeat fixed;
             color: white;
             padding: 40px 20px 90px;
             text-align: center;
@@ -45,11 +45,11 @@
         }
 
         .hero h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1px; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .hero p { color: var(--accent); font-size: 1rem; margin-top: 10px; font-weight: 500; }
+        .hero p { color: var(--accent); font-size: 1rem; margin-top: 10px; font-weight: 500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
 
         .countdown-container {
             margin: 20px auto;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             border-radius: 12px;
             padding: 10px 15px;
             display: inline-flex;
@@ -66,7 +66,7 @@
             font-size: 0.9rem; color: white;
         }
         .contact-item { 
-            background: rgba(255,255,255,0.15); padding: 8px 20px; border-radius: 50px; 
+            background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; 
             display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.2);
             backdrop-filter: blur(5px);
         }
@@ -114,20 +114,10 @@
         
         .flight-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
         .flight-title { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
-        
-        /* FlightAware Button Style */
         .flight-code { 
-            background: #002F5D; /* FlightAware Navy */
-            color: #fff; 
-            padding: 4px 12px; 
-            border-radius: 20px; 
-            font-weight: bold; 
-            font-size: 0.9rem; 
-            display: flex; 
-            align-items: center; 
-            gap: 6px; 
-            text-decoration: none; 
-            transition: all 0.3s; 
+            background: #0b2e4a; color: #fff; padding: 4px 12px; border-radius: 20px; 
+            font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; 
+            text-decoration: none; transition: all 0.3s; 
         }
         .flight-code:hover { background: #00a0e2; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
         
@@ -173,7 +163,6 @@
         .day-title { font-size: 1.3rem; font-weight: 800; color: var(--primary); margin: 0 0 5px 0; line-height: 1.3; }
         .day-date { color: white; background-color: var(--secondary); font-weight: 600; font-size: 0.9rem; padding: 4px 12px; border-radius: 4px; display: inline-block; }
 
-        /* 集合資訊區塊 */
         .meeting-box {
             background-color: #fff8e1; border: 1px solid #ffe0b2; border-radius: 10px;
             padding: 15px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;
@@ -261,9 +250,11 @@
 
         <div class="contact-box">
             <div class="contact-item">
-                <span class="contact-icon">導</span> 隨團：胡宜 <a href="tel:0918776707" class="contact-phone">0918-776-707</a> </div>
+                <span class="contact-icon">導</span> 隨團：胡宜 <a href="tel:0918776707" class="contact-phone">0918-776-707</a>
+            </div>
             <div class="contact-item">
-                <span class="contact-icon">機</span> 送機：蕭譜軒 <a href="tel:0928251747" class="contact-phone">0928-251-747</a> </div>
+                <span class="contact-icon">機</span> 送機：蕭譜軒 <a href="tel:0928251747" class="contact-phone">0928-251-747</a>
+            </div>
         </div>
     </header>
 
@@ -335,7 +326,7 @@
         <div id="d1" class="day-card" data-date="2025-11-24">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop" alt="Travel Start" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/2c3e50/ffffff?text=Day+1+Departure'">
+                <img src="https://cdn.pixabay.com/photo/2014/11/02/10/41/plane-513641_1280.jpg" alt="Travel Start" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/2c3e50/ffffff?text=Day+1+Departure'">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -347,15 +338,15 @@
                     <div class="meeting-title"><i class="fa-solid fa-flag"></i> 集合資訊</div>
                     <div class="meeting-row">
                         <i class="fa-regular fa-clock meeting-icon"></i>
-                        <span><strong>05:30</strong> 準時集合 </span>
+                        <span><strong>05:30</strong> 準時集合</span>
                     </div>
                     <div class="meeting-row">
                         <i class="fa-solid fa-location-dot meeting-icon"></i>
-                        <span>桃園機場第一航廈 <strong>3號櫃檯</strong> (星宇航空團體櫃檯) </span>
+                        <span>桃園機場第一航廈 <strong>3號櫃檯</strong> (星宇航空團體櫃檯)</span>
                     </div>
                     <div class="meeting-row">
                         <i class="fa-solid fa-phone meeting-icon"></i>
-                        <span>抵達機場請聯絡隨團人員 </span>
+                        <span>抵達機場請聯絡隨團人員</span>
                     </div>
                 </div>
 
@@ -373,7 +364,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">希爾頓歡朋月亮島店</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:073188591888">0731-88591888</a> </div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:073188591888">0731-88591888</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -387,7 +378,7 @@
         <div id="d2" class="day-card" data-date="2025-11-25">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1563804808739-427c6433374d?q=80&w=2070&auto=format&fit=crop" alt="Changsha Culture" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/27ae60/ffffff?text=Day+2+Changsha'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Orange_Isle_Bridge.jpg/1280px-Orange_Isle_Bridge.jpg" alt="Changsha Culture" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/27ae60/ffffff?text=Day+2+Changsha'">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -416,7 +407,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">常德澤雲大酒店</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07367833333">0736-7833333</a> </div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07367833333">0736-7833333</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -430,7 +421,7 @@
         <div id="d3" class="day-card" data-date="2025-11-26">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1568432988733-7269d2a6247e?q=80&w=2026&auto=format&fit=crop" alt="Fenghuang" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/c0392b/ffffff?text=Day+3+Fenghuang'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Fenghuang_Hunan_China_Tuojiang-River-01.jpg/1280px-Fenghuang_Hunan_China_Tuojiang-River-01.jpg" alt="Fenghuang" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/c0392b/ffffff?text=Day+3+Fenghuang'">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -459,7 +450,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">鳳鳴天下國際酒店</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07436266666">0743-6266666</a> </div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07436266666">0743-6266666</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -473,7 +464,7 @@
         <div id="d4" class="day-card" data-date="2025-11-27">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1533555760832-2531482c41cc?q=80&w=2070&auto=format&fit=crop" alt="Waterfall Town" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/34495e/ffffff?text=Day+4+Zhangjiajie'">
+                <img src="https://cdn.pixabay.com/photo/2016/11/21/17/41/waterfall-1846724_1280.jpg" alt="Waterfall Town" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/34495e/ffffff?text=Day+4+Zhangjiajie'">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -498,7 +489,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">張家界戴斯溫德姆</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442778888">0744-2778888</a> </div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442778888">0744-2778888</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -512,7 +503,7 @@
         <div id="d5" class="day-card" data-date="2025-11-28">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1504235888440-da641c78503c?q=80&w=2070&auto=format&fit=crop" alt="Tianmen Mountain" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/7f8c8d/ffffff?text=Day+5+Tianmen'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Tianmen_Mountain_99_bends.jpg/1280px-Tianmen_Mountain_99_bends.jpg" alt="Tianmen Mountain" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/7f8c8d/ffffff?text=Day+5+Tianmen'">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -541,7 +532,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">武陵源戴斯温德姆</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442828888">0744-2828888</a> </div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442828888">0744-2828888</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -555,7 +546,7 @@
         <div id="d6" class="day-card" data-date="2025-11-29">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1470075801209-17f9ec0cade6?q=80&w=1976&auto=format&fit=crop" alt="Avatar Mountains" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/27ae60/ffffff?text=Day+6+Avatar+Mtn'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Southern_Sky_Column.jpg/1280px-Southern_Sky_Column.jpg" alt="Avatar Mountains" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/27ae60/ffffff?text=Day+6+Avatar+Mtn'">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -588,7 +579,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">張家界戴斯溫德姆</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442778888">0744-2778888</a> </div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442778888">0744-2778888</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -602,7 +593,7 @@
         <div id="d7" class="day-card" data-date="2025-11-30">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=2070&auto=format&fit=crop" alt="Changsha Food" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/e67e22/ffffff?text=Day+7+Food'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Wenheyou_in_Changsha.jpg/1280px-Wenheyou_in_Changsha.jpg" alt="Changsha Food" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/e67e22/ffffff?text=Day+7+Food'">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -627,7 +618,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">希爾頓歡朋月亮島店</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:073188591888">0731-88591888</a> </div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:073188591888">0731-88591888</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -641,7 +632,7 @@
         <div id="d8" class="day-card" data-date="2025-12-01">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1582653380436-988a9fa93690?q=80&w=2070&auto=format&fit=crop" alt="Chinese Garden" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/95a5a6/ffffff?text=Day+8+Return'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Beijing_New_Yuan_Ming_Palace_01.JPG/1280px-Beijing_New_Yuan_Ming_Palace_01.JPG" alt="Chinese Garden" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/95a5a6/ffffff?text=Day+8+Return'">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -689,7 +680,7 @@
         backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
         function initTravelApp() {
-            // 測試模式：true = 強制顯示 2025-11-24 為今日
+            // 測試模式開關
             const testMode = true; 
 
             const tripStartDate = new Date("2025-11-24T05:30:00").getTime();
