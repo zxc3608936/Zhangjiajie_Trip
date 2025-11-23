@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>星動張家界 8 日遊 - 尊爵行程表</title>
+    <title>星動張家界 8 日遊 - 最終確認版</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -158,6 +158,15 @@
         .day-title { font-size: 1.3rem; font-weight: 800; color: var(--primary); margin: 0 0 5px 0; line-height: 1.3; }
         .day-date { color: white; background-color: var(--secondary); font-weight: 600; font-size: 0.9rem; padding: 4px 12px; border-radius: 4px; display: inline-block; }
 
+        /* 集合資訊區塊 */
+        .meeting-box {
+            background-color: #fff8e1; border: 1px solid #ffe0b2; border-radius: 10px;
+            padding: 15px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;
+        }
+        .meeting-title { font-weight: 800; color: #e67e22; display: flex; align-items: center; gap: 5px; }
+        .meeting-row { font-size: 0.95rem; color: #5d4037; display: flex; align-items: flex-start; gap: 8px; }
+        .meeting-icon { color: #e67e22; margin-top: 3px; }
+
         .itinerary-list { list-style: none; padding: 0; margin: 0 0 25px 0; }
         .itinerary-item { margin-bottom: 20px; padding-left: 20px; position: relative; }
         .itinerary-item::before {
@@ -174,10 +183,12 @@
         
         .hotel-block {
             background: #eafaf1; border-radius: 8px; padding: 12px; margin-bottom: 15px;
-            display: flex; align-items: center; border-left: 4px solid var(--secondary);
+            display: flex; flex-direction: column; border-left: 4px solid var(--secondary);
         }
-        .hotel-label { background: var(--secondary); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-right: 10px; }
-        .hotel-val { font-weight: 600; color: var(--primary); font-size: 1rem; }
+        .hotel-label { background: var(--secondary); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; width: fit-content; margin-bottom: 5px; }
+        .hotel-name { font-weight: 600; color: var(--primary); font-size: 1.05rem; }
+        .hotel-phone { font-size: 0.9rem; color: var(--text-desc); margin-top: 2px; display: flex; align-items: center; gap: 5px; }
+        .hotel-phone a { text-decoration: none; color: var(--secondary); font-weight: bold; }
 
         .meals-grid { display: grid; grid-template-columns: 1fr; gap: 8px; } 
         .meal-item { display: flex; align-items: center; font-size: 0.9rem; background: white; padding: 8px; border-radius: 6px; border: 1px solid #eee; }
@@ -197,7 +208,6 @@
 
         @media (min-width: 768px) {
             .flight-section { grid-template-columns: 1fr 1fr; }
-            .info-grid { grid-template-columns: 1fr 1fr; }
             .meals-grid { grid-template-columns: repeat(3, 1fr); }
             .contact-box { flex-direction: row; }
             .day-image-container { height: 250px; }
@@ -320,24 +330,37 @@
                     <span class="day-date">11/24 (一)</span>
                 </div>
                 
+                <div class="meeting-box">
+                    <div class="meeting-title"><i class="fa-solid fa-flag"></i> 集合資訊</div>
+                    <div class="meeting-row">
+                        <i class="fa-regular fa-clock meeting-icon"></i>
+                        <span><strong>05:30</strong> 準時集合</span>
+                    </div>
+                    <div class="meeting-row">
+                        <i class="fa-solid fa-location-dot meeting-icon"></i>
+                        <span>桃園機場第一航廈 <strong>3號櫃檯</strong> (星宇航空)</span>
+                    </div>
+                    <div class="meeting-row">
+                        <i class="fa-solid fa-phone meeting-icon"></i>
+                        <span>隨團人員：胡宜 <a href="tel:0918776707" style="color:#d35400;font-weight:bold;">0918-776-707</a></span>
+                    </div>
+                </div>
+
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
-                        <span class="spot-name">05:30 集合</span>
-                        [cite_start]<p class="spot-desc">請於桃園國際機場第一航廈「星宇航空」團體櫃檯集合，準備搭機。請務必攜帶護照與台胞證 [cite: 3-4]。</p>
-                    </li>
-                    <li class="itinerary-item">
                         <span class="spot-name">搭機前往澳門</span>
-                        [cite_start]<p class="spot-desc">搭乘 JX-201 (08:35-10:35) 飛往澳門，隨後經珠海搭乘動車前往長沙 [cite: 7, 194]。</p>
+                        <p class="spot-desc">搭乘 JX-201 (08:35-10:35) 飛往澳門，隨後經珠海搭乘動車前往長沙 [cite: 7, 11]。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">入住希爾頓歡朋</span>
-                        [cite_start]<p class="spot-desc">抵達長沙後，入住月亮島希爾頓歡朋酒店，準備展開旅程 [cite: 198]。</p>
+                        <p class="spot-desc">抵達長沙後，入住月亮島希爾頓歡朋酒店，準備展開旅程。</p>
                     </li>
                 </ul>
                 
                 <div class="hotel-block">
-                    <span class="hotel-label">住宿</span>
-                    <span class="hotel-val">希爾頓歡朋月亮島店</span>
+                    <span class="hotel-label">住宿飯店</span>
+                    <div class="hotel-name">希爾頓歡朋月亮島店</div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:073188591888">0731-88591888</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -361,25 +384,26 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">長沙簡牘博物館</span>
-                        [cite_start]<p class="spot-desc">中國唯一集簡牘保護研究的專題博物館，採三國高臺建築風格 [cite: 204-205]。</p>
+                        <p class="spot-desc">中國唯一集簡牘保護研究的專題博物館，採三國高臺建築風格 [cite: 204-205]。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">橘子洲頭 (含電瓶車)</span>
-                        [cite_start]<p class="spot-desc">被稱為「中國第一洲」，四面環水，風景清幽，是古代詩人鍾愛之地 [cite: 207-208]。</p>
+                        <p class="spot-desc">被稱為「中國第一洲」，四面環水，風景清幽，是古代詩人鍾愛之地 [cite: 207-208]。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">常德：柳葉湖與詩牆</span>
-                        [cite_start]<p class="spot-desc">遊覽中國最大城市湖泊之一，並參觀獲金氏紀錄的「世界最長詩書畫刻藝術牆」 [cite: 215, 220]。</p>
+                        <p class="spot-desc">遊覽中國最大城市湖泊之一，並參觀獲金氏紀錄的「世界最長詩書畫刻藝術牆」。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">德國小鎮與穿紫河</span>
-                        [cite_start]<p class="spot-desc">體驗原汁原味的德式建築街區，並漫步於千年古運河畔 [cite: 224, 229]。</p>
+                        <p class="spot-desc">體驗原汁原味的德式建築街區，並漫步於千年古運河畔。</p>
                     </li>
                 </ul>
 
                 <div class="hotel-block">
-                    <span class="hotel-label">住宿</span>
-                    <span class="hotel-val">常德澤雲大酒店</span>
+                    <span class="hotel-label">住宿飯店</span>
+                    <div class="hotel-name">常德澤雲大酒店</div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07367833333">0736-7833333</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -403,25 +427,26 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">桃花源古鎮</span>
-                        [cite_start]<p class="spot-desc">位於魚米之鄉常德，展現陶淵明隱世文化的大型人文主題建築群 [cite: 241]。</p>
+                        <p class="spot-desc">位於魚米之鄉常德，展現陶淵明隱世文化的大型人文主題建築群。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">鳳凰古城巡禮</span>
-                        [cite_start]<p class="spot-desc">中國最美小城。參觀沈從文故居、萬壽宮等古色古香的建築群 [cite: 248, 252]。</p>
+                        <p class="spot-desc">中國最美小城。參觀沈從文故居、萬壽宮等古色古香的建築群。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">贈送：沱江泛舟</span>
-                        [cite_start]<p class="spot-desc">乘船遊覽沱江，體驗水上威尼斯的浪漫氣氛，欣賞兩岸吊腳樓風光 [cite: 256]。</p>
+                        <p class="spot-desc">乘船遊覽沱江，體驗水上威尼斯的浪漫氣氛，欣賞兩岸吊腳樓風光。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">鳳凰夜景</span>
-                        [cite_start]<p class="spot-desc">夜間的鳳凰燈火輝煌，流光溢彩，倒映在沱江之中，如夢似幻 [cite: 260]。</p>
+                        <p class="spot-desc">夜間的鳳凰燈火輝煌，流光溢彩，倒映在沱江之中，如夢似幻。</p>
                     </li>
                 </ul>
 
                 <div class="hotel-block">
-                    <span class="hotel-label">住宿</span>
-                    <span class="hotel-val">鳳鳴天下國際酒店</span>
+                    <span class="hotel-label">住宿飯店</span>
+                    <div class="hotel-name">鳳鳴天下國際酒店</div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07436266666">0743-6266666</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -445,21 +470,22 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">漫步鳳凰古城</span>
-                        [cite_start]<p class="spot-desc">走過青石板街，登上東門城樓與北門城樓，穿越歷史悠久的虹橋風雨樓 [cite: 272-300]。</p>
+                        <p class="spot-desc">走過青石板街，登上東門城樓與北門城樓，穿越歷史悠久的虹橋風雨樓 [cite: 272-300]。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">芙蓉鎮 (含電瓶車+遊船)</span>
-                        [cite_start]<p class="spot-desc">原名王村，掛在瀑布上的千年古鎮，擁有宏偉瀑布穿鎮而過 [cite: 325]。</p>
+                        <p class="spot-desc">原名王村，掛在瀑布上的千年古鎮，擁有宏偉瀑布穿鎮而過。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">張家界 72 奇樓</span>
-                        [cite_start]<p class="spot-desc">全世界最高的沖天吊腳樓，體驗夜景燈光秀與篝火晚會，視覺饗宴 [cite: 332]。</p>
+                        <p class="spot-desc">全世界最高的沖天吊腳樓，體驗夜景燈光秀與篝火晚會，視覺饗宴。</p>
                     </li>
                 </ul>
 
                 <div class="hotel-block">
-                    <span class="hotel-label">住宿</span>
-                    <span class="hotel-val">張家界戴斯溫德姆</span>
+                    <span class="hotel-label">住宿飯店</span>
+                    <div class="hotel-name">張家界戴斯溫德姆</div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442778888">0744-2778888</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -483,25 +509,26 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">天門山國家森林公園 (含纜車)</span>
-                        [cite_start]<p class="spot-desc">搭乘世界最長高山客運索道 (7500公尺)，俯瞰通天大道與絕壁千仞 [cite: 343]。</p>
+                        <p class="spot-desc">搭乘世界最長高山客運索道 (7500公尺)，俯瞰通天大道與絕壁千仞。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天空之路：玻璃棧道</span>
-                        [cite_start]<p class="spot-desc">挑戰懸於峭壁之上的透明玻璃棧道（含鞋套），體驗雲端漫步的刺激 [cite: 367]。</p>
+                        <p class="spot-desc">挑戰懸於峭壁之上的透明玻璃棧道（含鞋套），體驗雲端漫步的刺激。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天門洞 (含穿山扶梯)</span>
-                        [cite_start]<p class="spot-desc">世界海拔最高的天然穿山溶洞，高131.5米，氣勢磅礡 [cite: 352]。</p>
+                        <p class="spot-desc">世界海拔最高的天然穿山溶洞，高131.5米，氣勢磅礡。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">黃龍洞 (VIP禮遇)</span>
-                        [cite_start]<p class="spot-desc">中國最大溶洞之一，安排VIP電瓶車與專屬通道，欣賞定海神針 [cite: 371]。</p>
+                        <p class="spot-desc">中國最大溶洞之一，安排VIP電瓶車與專屬通道，欣賞定海神針。</p>
                     </li>
                 </ul>
 
                 <div class="hotel-block">
-                    <span class="hotel-label">住宿</span>
-                    <span class="hotel-val">武陵源戴斯温德姆</span>
+                    <span class="hotel-label">住宿飯店</span>
+                    <div class="hotel-name">武陵源戴斯温德姆</div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442828888">0744-2828888</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -525,29 +552,30 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">百龍天梯 (包梯上行)</span>
-                        [cite_start]<p class="spot-desc">世界最高戶外電梯，88秒直達326米山頂 [cite: 379]。</p>
+                        <p class="spot-desc">世界最高戶外電梯，88秒直達326米山頂。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">袁家界：哈利路亞懸浮山</span>
-                        [cite_start]<p class="spot-desc">電影《阿凡達》取景地，觀賞天下第一橋、迷魂台，體驗奇峰三千的震撼 [cite: 404]。</p>
+                        <p class="spot-desc">電影《阿凡達》取景地，觀賞天下第一橋、迷魂台，體驗奇峰三千的震撼。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天子山與賀龍公園</span>
-                        [cite_start]<p class="spot-desc">有「擴大的盆景」之稱，搭乘纜車下山，欣賞御筆鋒、西海石林 [cite: 409]。</p>
+                        <p class="spot-desc">有「擴大的盆景」之稱，搭乘纜車下山，欣賞御筆鋒、西海石林。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">寶峰湖 (VIP遊船)</span>
-                        [cite_start]<p class="spot-desc">高峽平湖絕景，世界自然遺產，乘船遊湖欣賞山水 [cite: 439]。</p>
+                        <p class="spot-desc">高峽平湖絕景，世界自然遺產，乘船遊湖欣賞山水。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天門狐仙秀</span>
-                        [cite_start]<p class="spot-desc">世界首台高山峽谷實景音樂劇，演繹感人的人狐之戀 [cite: 444]。</p>
+                        <p class="spot-desc">世界首台高山峽谷實景音樂劇，演繹感人的人狐之戀。</p>
                     </li>
                 </ul>
 
                 <div class="hotel-block">
-                    <span class="hotel-label">住宿</span>
-                    <span class="hotel-val">張家界戴斯溫德姆</span>
+                    <span class="hotel-label">住宿飯店</span>
+                    <div class="hotel-name">張家界戴斯溫德姆</div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442778888">0744-2778888</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -571,21 +599,22 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">超級文和友</span>
-                        [cite_start]<p class="spot-desc">網紅打卡地，還原了80年代的老長沙社區場景 [cite: 454]。</p>
+                        <p class="spot-desc">網紅打卡地，還原了80年代的老長沙社區場景。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">IFS 國金中心與步行街</span>
-                        [cite_start]<p class="spot-desc">長沙最繁華的地段，擁有452米高的第一高樓 [cite: 459]。</p>
+                        <p class="spot-desc">長沙最繁華的地段，擁有452米高的第一高樓。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">晚餐升等：喜庭海鮮自助火鍋</span>
-                        [cite_start]<p class="spot-desc">價值 158 RMB/人的特別升級，享受鮮切牛肉與海鮮美味 [cite: 467]。</p>
+                        <p class="spot-desc">價值 158 RMB/人的特別升級，享受鮮切牛肉與海鮮美味。</p>
                     </li>
                 </ul>
 
                 <div class="hotel-block">
-                    <span class="hotel-label">住宿</span>
-                    <span class="hotel-val">希爾頓歡朋月亮島店</span>
+                    <span class="hotel-label">住宿飯店</span>
+                    <div class="hotel-name">希爾頓歡朋月亮島店</div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:073188591888">0731-88591888</a></div>
                 </div>
 
                 <div class="meals-grid">
@@ -609,15 +638,15 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">圓明新園</span>
-                        [cite_start]<p class="spot-desc">按1:1比例精選北京圓明園18景建造，重現皇家園林的氣勢 [cite: 481]。</p>
+                        <p class="spot-desc">按1:1比例精選北京圓明園18景建造，重現皇家園林的氣勢。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">北山大院楊氏大宗祠</span>
-                        [cite_start]<p class="spot-desc">建於1868年，珠海最大的民間祠堂，傳聞是楊家將後人所建 [cite: 485]。</p>
+                        <p class="spot-desc">建於1868年，珠海最大的民間祠堂，傳聞是楊家將後人所建，古色古香。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">搭機返台 (JX-206)</span>
-                        [cite_start]<p class="spot-desc">前往澳門機場，搭機返回溫暖的家 (22:25 抵達桃園) [cite: 489]。</p>
+                        <p class="spot-desc">前往澳門機場，搭機返回溫暖的家 (22:25 抵達桃園)。</p>
                     </li>
                 </ul>
 
