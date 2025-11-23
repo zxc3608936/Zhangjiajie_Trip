@@ -34,18 +34,29 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* --- Hero Header (CSS Pattern) --- */
         .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.6)), 
-                        url('https://images.unsplash.com/photo-1516903564305-33792b045de6?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;
+            /* 使用 CSS 漸層代替背景圖，確保顯示 */
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
             color: white;
             padding: 30px 20px 80px;
             text-align: center;
             position: relative;
-            background-color: #2c3e50;
+            overflow: hidden;
+        }
+        
+        /* 增加一點背景紋理 */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 20%),
+                              radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 20%);
+            pointer-events: none;
         }
 
-        .hero h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1px; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .hero p { color: var(--accent); font-size: 1rem; margin-top: 10px; font-weight: 500; }
+        .hero h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1px; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative; }
+        .hero p { color: var(--accent); font-size: 1rem; margin-top: 10px; font-weight: 500; position: relative; }
 
         .countdown-container {
             margin: 20px auto;
@@ -56,7 +67,8 @@
             gap: 15px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            position: relative;
         }
         .countdown-item { display: flex; flex-direction: column; align-items: center; min-width: 40px; }
         .countdown-number { font-size: 1.5rem; font-weight: 700; color: #fff; line-height: 1; }
@@ -64,10 +76,10 @@
 
         .contact-box {
             display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;
-            font-size: 0.9rem; color: white;
+            font-size: 0.9rem; color: white; position: relative;
         }
         .contact-item { 
-            background: rgba(0,0,0,0.6); padding: 8px 20px; border-radius: 50px; 
+            background: rgba(0,0,0,0.3); padding: 8px 20px; border-radius: 50px; 
             display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.1);
             width: fit-content;
         }
@@ -127,8 +139,7 @@
             overflow: hidden;
             transition: transform 0.3s ease;
             border: 2px solid transparent;
-            /* !!! 關鍵修正：加入相對定位，讓裡面的絕對定位標籤能找到家 !!! */
-            position: relative; 
+            position: relative; /* 關鍵定位點 */
         }
         
         @keyframes pulse-border {
@@ -139,7 +150,7 @@
 
         .day-card.today { border-color: var(--highlight-border); animation: pulse-border 2s infinite; }
         
-        /* 修正後的標籤樣式：貼齊右上角 */
+        /* 標籤定位修正 */
         .today-badge { 
             position: absolute;
             top: 0;
@@ -147,18 +158,46 @@
             background: #e74c3c;
             color: white;
             padding: 6px 15px;
-            border-bottom-left-radius: 16px; /* 圓弧角設計 */
+            border-bottom-left-radius: 16px;
             font-weight: bold;
             font-size: 0.85rem;
-            z-index: 10;
+            z-index: 20;
             display: none;
             box-shadow: -2px 2px 5px rgba(0,0,0,0.1);
         }
         .day-card.today .today-badge { display: block; }
 
-        .day-image-container { height: 180px; overflow: hidden; position: relative; background-color: #eee; }
-        .day-image { width: 100%; height: 100%; object-fit: cover; }
-        .day-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.6)); height: 80px; pointer-events: none; }
+        /* --- CSS Generated Images (意境圖) --- */
+        .day-visual {
+            height: 160px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visual-icon {
+            font-size: 4rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            z-index: 2;
+            transition: transform 0.3s;
+        }
+        
+        .day-card:hover .visual-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* 各日期的背景漸層設計 */
+        .visual-d1 { background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); } /* 飛機藍 */
+        .visual-d2 { background: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); } /* 柳葉綠 */
+        .visual-d3 { background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%); } /* 古城紅紫 */
+        .visual-d4 { background: linear-gradient(120deg, #4facfe 0%, #00f2fe 100%); } /* 瀑布藍 */
+        .visual-d5 { background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); } /* 天門山雲霧 */
+        .visual-d6 { background: linear-gradient(120deg, #0ba360 0%, #3cba92 100%); } /* 阿凡達山林 */
+        .visual-d7 { background: linear-gradient(120deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); } /* 長沙美食 */
+        .visual-d8 { background: linear-gradient(120deg, #e2ebf0 0%, #cfd9df 100%); } /* 回家 */
 
         .day-content { padding: 20px; }
 
@@ -215,7 +254,7 @@
             .info-grid { grid-template-columns: 1fr 1fr; }
             .meals-grid { grid-template-columns: repeat(3, 1fr); }
             .contact-box { flex-direction: row; }
-            .day-image-container { height: 250px; }
+            .day-visual { height: 200px; }
             .day-header { flex-direction: row; align-items: flex-end; justify-content: space-between; }
         }
 
@@ -310,9 +349,8 @@
 
         <div id="d1" class="day-card" data-date="2025-11-24">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop" alt="Travel Start" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=2070'">
-                <div class="day-overlay"></div>
+            <div class="day-visual visual-d1">
+                <div class="visual-icon">🛫</div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -353,9 +391,8 @@
 
         <div id="d2" class="day-card" data-date="2025-11-25">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1563804808739-427c6433374d?q=80&w=2070&auto=format&fit=crop" alt="Changsha Culture" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2070'">
-                <div class="day-overlay"></div>
+            <div class="day-visual visual-d2">
+                <div class="visual-icon">📜</div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -399,9 +436,8 @@
 
         <div id="d3" class="day-card" data-date="2025-11-26">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1568432988733-7269d2a6247e?q=80&w=2026&auto=format&fit=crop" alt="Fenghuang" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1543082933-a94b425d9602?q=80&w=2070'">
-                <div class="day-overlay"></div>
+            <div class="day-visual visual-d3">
+                <div class="visual-icon">🏮</div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -445,9 +481,8 @@
 
         <div id="d4" class="day-card" data-date="2025-11-27">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1512813195386-6cf811ad3542?q=80&w=2070&auto=format&fit=crop" alt="Waterfall Town" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1533555760832-2531482c41cc?q=80&w=2070'">
-                <div class="day-overlay"></div>
+            <div class="day-visual visual-d4">
+                <div class="visual-icon">🌊</div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -487,9 +522,8 @@
 
         <div id="d5" class="day-card" data-date="2025-11-28">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1631614827523-237366b43722?q=80&w=2070" alt="Tianmen Mountain" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1504235888440-da641c78503c?q=80&w=2070'">
-                <div class="day-overlay"></div>
+            <div class="day-visual visual-d5">
+                <div class="visual-icon">🚠</div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -533,9 +567,8 @@
 
         <div id="d6" class="day-card" data-date="2025-11-29">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1470075801209-17f9ec0cade6?q=80&w=1976&auto=format&fit=crop" alt="Avatar Mountains" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=2070'">
-                <div class="day-overlay"></div>
+            <div class="day-visual visual-d6">
+                <div class="visual-icon">⛰️</div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -583,9 +616,8 @@
 
         <div id="d7" class="day-card" data-date="2025-11-30">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=2070&auto=format&fit=crop" alt="Changsha Food" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070'">
-                <div class="day-overlay"></div>
+            <div class="day-visual visual-d7">
+                <div class="visual-icon">🍲</div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -625,9 +657,8 @@
 
         <div id="d8" class="day-card" data-date="2025-12-01">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1599629897280-460097974002?q=80&w=2070&auto=format&fit=crop" alt="Chinese Garden" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1582653380436-988a9fa93690?q=80&w=2070'">
-                <div class="day-overlay"></div>
+            <div class="day-visual visual-d8">
+                <div class="visual-icon">🏠</div>
             </div>
             <div class="day-content">
                 <div class="day-header">
