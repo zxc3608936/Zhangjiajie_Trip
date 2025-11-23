@@ -114,9 +114,22 @@
         
         .flight-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
         .flight-title { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
-        /* FlightAware 連結樣式 */
-        .flight-code { background: #0b2e4a; color: #fff; padding: 4px 10px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; text-decoration: none; transition: all 0.3s; }
-        .flight-code:hover { background: #00a0e2; } /* FlightAware Blue */
+        
+        /* FlightAware Button Style */
+        .flight-code { 
+            background: #002F5D; /* FlightAware Navy */
+            color: #fff; 
+            padding: 4px 12px; 
+            border-radius: 20px; 
+            font-weight: bold; 
+            font-size: 0.9rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+            text-decoration: none; 
+            transition: all 0.3s; 
+        }
+        .flight-code:hover { background: #00a0e2; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
         
         .flight-route { display: flex; justify-content: space-between; align-items: center; text-align: center; }
         .airport-code { font-size: 1.5rem; font-weight: 900; color: var(--text-main); display: block; }
@@ -248,11 +261,9 @@
 
         <div class="contact-box">
             <div class="contact-item">
-                <span class="contact-icon">導</span> 隨團：胡宜 <a href="tel:0918776707" class="contact-phone">0918-776-707</a>
-            </div>
+                <span class="contact-icon">導</span> 隨團：胡宜 <a href="tel:0918776707" class="contact-phone">0918-776-707</a> </div>
             <div class="contact-item">
-                <span class="contact-icon">機</span> 送機：蕭譜軒 <a href="tel:0928251747" class="contact-phone">0928-251-747</a>
-            </div>
+                <span class="contact-icon">機</span> 送機：蕭譜軒 <a href="tel:0928251747" class="contact-phone">0928-251-747</a> </div>
         </div>
     </header>
 
@@ -274,7 +285,7 @@
                 <div class="flight-header">
                     <div class="flight-title">🛫 去程航班 (11/24)</div>
                     <a href="https://www.flightaware.com/live/flight/JX201" target="_blank" class="flight-code">
-                        JX-201 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        JX-201 <i class="fa-solid fa-location-arrow"></i>
                     </a>
                 </div>
                 <div class="flight-route">
@@ -299,7 +310,7 @@
                 <div class="flight-header">
                     <div class="flight-title">🛬 回程航班 (12/01)</div>
                     <a href="https://www.flightaware.com/live/flight/JX206" target="_blank" class="flight-code">
-                        JX-206 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        JX-206 <i class="fa-solid fa-location-arrow"></i>
                     </a>
                 </div>
                 <div class="flight-route">
@@ -336,15 +347,15 @@
                     <div class="meeting-title"><i class="fa-solid fa-flag"></i> 集合資訊</div>
                     <div class="meeting-row">
                         <i class="fa-regular fa-clock meeting-icon"></i>
-                        <span><strong>05:30</strong> 準時集合</span>
+                        <span><strong>05:30</strong> 準時集合 </span>
                     </div>
                     <div class="meeting-row">
                         <i class="fa-solid fa-location-dot meeting-icon"></i>
-                        <span>桃園機場第一航廈 <strong>3號櫃檯</strong> (星宇航空)</span>
+                        <span>桃園機場第一航廈 <strong>3號櫃檯</strong> (星宇航空團體櫃檯) </span>
                     </div>
                     <div class="meeting-row">
                         <i class="fa-solid fa-phone meeting-icon"></i>
-                        <span>隨團人員：胡宜 <a href="tel:0918776707" style="color:#d35400;font-weight:bold;">0918-776-707</a></span>
+                        <span>抵達機場請聯絡隨團人員 </span>
                     </div>
                 </div>
 
@@ -362,7 +373,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">希爾頓歡朋月亮島店</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:073188591888">0731-88591888</a></div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:073188591888">0731-88591888</a> </div>
                 </div>
 
                 <div class="meals-grid">
@@ -386,11 +397,11 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">長沙簡牘博物館</span>
-                        <p class="spot-desc">中國唯一集簡牘保護研究的專題博物館，採三國高臺建築風格 [cite: 204-205]。</p>
+                        <p class="spot-desc">中國唯一集簡牘保護研究的專題博物館，採三國高臺建築風格。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">橘子洲頭 (含電瓶車)</span>
-                        <p class="spot-desc">被稱為「中國第一洲」，四面環水，風景清幽，是古代詩人鍾愛之地 [cite: 207-208]。</p>
+                        <p class="spot-desc">被稱為「中國第一洲」，四面環水，風景清幽，是古代詩人鍾愛之地。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">常德：柳葉湖與詩牆</span>
@@ -405,7 +416,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">常德澤雲大酒店</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07367833333">0736-7833333</a></div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07367833333">0736-7833333</a> </div>
                 </div>
 
                 <div class="meals-grid">
@@ -448,7 +459,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">鳳鳴天下國際酒店</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07436266666">0743-6266666</a></div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07436266666">0743-6266666</a> </div>
                 </div>
 
                 <div class="meals-grid">
@@ -472,7 +483,7 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">漫步鳳凰古城</span>
-                        <p class="spot-desc">走過青石板街，登上東門城樓與北門城樓，穿越歷史悠久的虹橋風雨樓 [cite: 272-300]。</p>
+                        <p class="spot-desc">走過青石板街，登上東門城樓與北門城樓，穿越歷史悠久的虹橋風雨樓。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">芙蓉鎮 (含電瓶車+遊船)</span>
@@ -487,7 +498,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">張家界戴斯溫德姆</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442778888">0744-2778888</a></div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442778888">0744-2778888</a> </div>
                 </div>
 
                 <div class="meals-grid">
@@ -530,7 +541,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">武陵源戴斯温德姆</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442828888">0744-2828888</a></div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442828888">0744-2828888</a> </div>
                 </div>
 
                 <div class="meals-grid">
@@ -577,7 +588,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">張家界戴斯溫德姆</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442778888">0744-2778888</a></div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:07442778888">0744-2778888</a> </div>
                 </div>
 
                 <div class="meals-grid">
@@ -616,7 +627,7 @@
                 <div class="hotel-block">
                     <span class="hotel-label">住宿飯店</span>
                     <div class="hotel-name">希爾頓歡朋月亮島店</div>
-                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:073188591888">0731-88591888</a></div>
+                    <div class="hotel-phone"><i class="fa-solid fa-phone"></i> 電話：<a href="tel:073188591888">0731-88591888</a> </div>
                 </div>
 
                 <div class="meals-grid">
@@ -678,7 +689,7 @@
         backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
         function initTravelApp() {
-            // 測試模式開關
+            // 測試模式：true = 強制顯示 2025-11-24 為今日
             const testMode = true; 
 
             const tripStartDate = new Date("2025-11-24T05:30:00").getTime();
