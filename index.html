@@ -2,8 +2,8 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星動張家界 8 日遊 - 尊爵導覽版</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>星動張家界 8 日遊 - 手機版導覽</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
 
@@ -22,180 +22,188 @@
             --bg-color: #f4f6f8;
             --text-main: #2c3e50;
             --text-desc: #57606f;
-            --nav-height: 70px;
+            --nav-height: 60px;
         }
 
-        html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+        html { scroll-behavior: smooth; scroll-padding-top: 130px; }
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
             padding: 0;
-            line-height: 1.8;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* --- Hero Header --- */
         .hero {
-            /* 背景圖備援機制：若圖片掛掉，顯示深色漸層 */
             background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.6)), 
                         url('https://images.unsplash.com/photo-1516903564305-33792b045de6?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;
             color: white;
-            padding: 60px 20px 120px;
+            padding: 30px 20px 80px; /* 手機版減少留白 */
             text-align: center;
             position: relative;
-            background-color: #2c3e50; /* Fallback color */
         }
 
-        .hero h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .hero p { color: var(--accent); font-size: 1.3rem; margin-top: 15px; font-weight: 500; }
+        .hero h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1px; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .hero p { color: var(--accent); font-size: 1rem; margin-top: 10px; font-weight: 500; }
 
-        /* 倒數計時器 */
+        /* 倒數計時器 (手機版優化) */
         .countdown-container {
-            margin: 30px auto;
+            margin: 20px auto;
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            padding: 15px 40px;
+            border-radius: 12px;
+            padding: 10px 15px;
             display: inline-flex;
-            gap: 30px;
+            gap: 15px; /* 縮小間距 */
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
-        .countdown-item { display: flex; flex-direction: column; align-items: center; }
-        .countdown-number { font-size: 2.2rem; font-weight: 700; color: #fff; line-height: 1; text-shadow: 0 2px 5px rgba(0,0,0,0.3); }
-        .countdown-label { font-size: 0.9rem; color: var(--accent); margin-top: 5px; letter-spacing: 1px; }
+        .countdown-item { display: flex; flex-direction: column; align-items: center; min-width: 40px; }
+        .countdown-number { font-size: 1.5rem; font-weight: 700; color: #fff; line-height: 1; }
+        .countdown-label { font-size: 0.7rem; color: var(--accent); margin-top: 4px; }
 
-        /* 聯絡人 */
+        /* 聯絡人 (手機版優化：堆疊排列) */
         .contact-box {
-            display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 25px;
-            font-size: 1rem; color: white;
+            display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;
+            font-size: 0.9rem; color: white;
         }
-        .contact-item { background: rgba(0,0,0,0.4); padding: 8px 20px; border-radius: 50px; display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.1); }
+        .contact-item { 
+            background: rgba(0,0,0,0.6); padding: 8px 20px; border-radius: 50px; 
+            display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.1);
+            width: fit-content;
+        }
         .contact-icon { color: var(--accent); margin-right: 10px; font-weight: bold; }
-        .contact-phone { color: #fff; font-weight: 700; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.5); transition: color 0.3s; }
-        .contact-phone:hover { color: var(--accent); }
+        .contact-phone { color: #fff; font-weight: 700; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.5); }
 
-        /* --- Sticky Nav --- */
+        /* --- Sticky Nav (手機橫向捲動優化) --- */
         .sticky-nav {
-            position: sticky; top: 15px; z-index: 1000;
-            width: 95%; max-width: 900px; margin: -50px auto 40px;
+            position: sticky; top: 10px; z-index: 1000;
+            width: 92%; margin: -40px auto 20px;
             background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(15px); border-radius: 50px;
-            padding: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            display: flex; overflow-x: auto; gap: 5px;
+            backdrop-filter: blur(15px); border-radius: 12px;
+            padding: 10px 5px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            display: flex; overflow-x: auto; gap: 8px;
             scrollbar-width: none;
+            scroll-snap-type: x mandatory; /* 滑動時會有磁吸效果 */
         }
         .sticky-nav::-webkit-scrollbar { display: none; }
+        
         .nav-btn {
-            flex: 1; text-align: center; color: var(--text-main); text-decoration: none;
-            padding: 12px 0; border-radius: 30px; font-size: 0.95rem; font-weight: 700;
-            transition: all 0.3s; white-space: nowrap; min-width: 70px;
+            flex: 0 0 auto; /* 防止被壓縮 */
+            text-align: center; color: var(--text-main); text-decoration: none;
+            padding: 8px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 700;
+            transition: all 0.3s; background: #f0f2f5;
+            scroll-snap-align: start; /* 磁吸對齊 */
         }
-        .nav-btn:hover { background-color: #ecf0f1; color: var(--secondary); }
-        .nav-btn.active-day { background-color: var(--secondary); color: white; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4); }
+        .nav-btn.active-day { background-color: var(--secondary); color: white; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.4); }
 
         /* --- Container --- */
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+        .container { max-width: 100%; margin: 0 auto; padding: 0 15px 80px; }
 
-        /* --- Info Cards --- */
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 50px; }
-        @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } }
+        /* --- Info Cards (手機版強制單欄) --- */
+        .info-grid { 
+            display: grid; grid-template-columns: 1fr; /* 單欄 */
+            gap: 20px; margin-bottom: 30px; 
+        }
         
         .card {
-            background: white; border-radius: 20px; padding: 30px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05); border-top: 5px solid var(--secondary);
+            background: white; border-radius: 16px; padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--secondary);
         }
-        .card h3 { margin: 0 0 20px 0; color: var(--primary); font-size: 1.2rem; display: flex; align-items: center; border-bottom: 2px solid #f1f1f1; padding-bottom: 15px; }
+        .card h3 { margin: 0 0 15px 0; color: var(--primary); font-size: 1.1rem; display: flex; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         
         /* 航班按鈕樣式 */
         .flight-btn {
-            display: inline-flex; align-items: center;
+            display: inline-flex; align-items: center; justify-content: center;
             background-color: #ebfbf3; color: var(--secondary);
-            padding: 4px 12px; border-radius: 20px;
+            padding: 6px 12px; border-radius: 8px; width: 100%;
             text-decoration: none; font-size: 0.9rem; font-weight: 700;
-            border: 1px solid var(--secondary); transition: all 0.3s;
-            margin-bottom: 2px;
+            border: 1px solid var(--secondary); margin-top: 5px;
         }
-        .flight-btn:hover { background-color: var(--secondary); color: white; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(39, 174, 96, 0.2); }
-        .flight-btn i { margin-left: 5px; }
-
+        
         /* --- Day Card Styles --- */
         .day-card {
-            background: white; border-radius: 24px; margin-bottom: 50px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08); overflow: hidden;
+            background: white; border-radius: 16px; margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); overflow: hidden;
             transition: transform 0.3s ease; border: 2px solid transparent;
         }
         
-        /* 今日高亮 */
-        .day-card.today { border-color: var(--highlight-border); transform: scale(1.02); box-shadow: 0 20px 60px rgba(230, 126, 34, 0.25); }
-        .today-badge { position: absolute; top: 20px; right: 20px; background: #e74c3c; color: white; padding: 8px 20px; border-radius: 30px; font-weight: bold; font-size: 0.9rem; z-index: 10; box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4); display: none; }
+        .day-card.today { border-color: var(--highlight-border); box-shadow: 0 10px 30px rgba(230, 126, 34, 0.2); }
+        .today-badge { position: absolute; top: 15px; right: 15px; background: #e74c3c; color: white; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; z-index: 10; display: none; }
         .day-card.today .today-badge { display: block; }
 
-        /* Image Header */
-        .day-image-container { height: 250px; overflow: hidden; position: relative; background-color: #eee; }
-        .day-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .day-card:hover .day-image { transform: scale(1.05); }
-        .day-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); height: 100px; pointer-events: none; }
+        /* Image Header (手機版高度減小) */
+        .day-image-container { height: 180px; overflow: hidden; position: relative; background-color: #eee; }
+        .day-image { width: 100%; height: 100%; object-fit: cover; }
+        .day-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.6)); height: 80px; pointer-events: none; }
 
-        .day-content { padding: 35px; }
+        .day-content { padding: 20px; }
 
-        .day-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; border-bottom: 2px solid #f1f1f1; padding-bottom: 20px; }
-        .day-title { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin: 0; line-height: 1.3; }
-        .day-date { color: white; background-color: var(--secondary); font-weight: 600; font-size: 1rem; padding: 6px 15px; border-radius: 50px; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3); }
+        .day-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 20px; border-bottom: 1px solid #f1f1f1; padding-bottom: 15px; }
+        .day-title { font-size: 1.3rem; font-weight: 800; color: var(--primary); margin: 0 0 5px 0; line-height: 1.3; }
+        .day-date { color: white; background-color: var(--secondary); font-weight: 600; font-size: 0.9rem; padding: 4px 12px; border-radius: 4px; }
 
-        /* Detailed Itinerary List */
-        .itinerary-list { list-style: none; padding: 0; margin: 0 0 30px 0; }
-        .itinerary-item { 
-            margin-bottom: 20px; padding-left: 25px; position: relative; 
-        }
+        /* Itinerary List */
+        .itinerary-list { list-style: none; padding: 0; margin: 0 0 25px 0; }
+        .itinerary-item { margin-bottom: 20px; padding-left: 20px; position: relative; }
         .itinerary-item::before {
-            content: ''; position: absolute; left: 0; top: 10px; width: 12px; height: 12px;
-            background: var(--accent); border-radius: 50%; box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.2);
+            content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px;
+            background: var(--accent); border-radius: 50%;
         }
         .itinerary-item::after {
-            content: ''; position: absolute; left: 5px; top: 25px; bottom: -25px; width: 2px; background: #eee; z-index: 0;
+            content: ''; position: absolute; left: 4px; top: 20px; bottom: -20px; width: 2px; background: #eee; z-index: 0;
         }
         .itinerary-item:last-child::after { display: none; }
 
-        .spot-name { font-weight: 700; font-size: 1.15rem; color: var(--primary); display: block; margin-bottom: 5px; }
-        .spot-desc { color: var(--text-desc); font-size: 0.95rem; margin: 0; text-align: justify; }
-        .tag { display: inline-block; background: #ff7675; color: white; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle; font-weight: normal; transform: translateY(-2px); }
-
-        /* Hotel Info Block */
+        .spot-name { font-weight: 700; font-size: 1.05rem; color: var(--primary); display: block; margin-bottom: 3px; }
+        .spot-desc { color: var(--text-desc); font-size: 0.9rem; margin: 0; text-align: justify; }
+        
+        /* Hotel & Meals (手機版優化) */
         .hotel-block {
-            background: #eafaf1; border-radius: 12px; padding: 15px 20px; margin-bottom: 20px;
-            display: flex; align-items: center; border-left: 5px solid var(--secondary);
+            background: #eafaf1; border-radius: 8px; padding: 12px; margin-bottom: 15px;
+            display: flex; align-items: flex-start; flex-direction: column; border-left: 4px solid var(--secondary);
         }
-        .hotel-label { font-weight: 700; color: var(--secondary); margin-right: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
-        .hotel-val { font-weight: 600; color: var(--primary); font-size: 1.05rem; }
+        .hotel-label { font-weight: 700; color: var(--secondary); font-size: 0.8rem; margin-bottom: 3px; }
+        .hotel-val { font-weight: 600; color: var(--primary); font-size: 1rem; }
 
-        /* Meals Section */
         .meals-container {
-            background-color: #fdfbf7; border-radius: 16px; padding: 25px;
+            background-color: #fffbf2; border-radius: 12px; padding: 15px;
             border: 1px solid #fae5d3;
         }
-        .meals-title { font-size: 0.9rem; font-weight: 700; color: #d35400; margin-bottom: 15px; display: block; text-transform: uppercase; letter-spacing: 1px; }
-        .meals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        @media (max-width: 600px) { .meals-grid { grid-template-columns: 1fr; gap: 15px; } }
+        .meals-title { font-size: 0.85rem; font-weight: 700; color: #d35400; margin-bottom: 10px; display: block; }
+        /* 餐食改為單欄排列 */
+        .meals-grid { display: grid; grid-template-columns: 1fr; gap: 8px; } 
 
-        .meal-item { display: flex; align-items: center; font-size: 0.95rem; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .meal-icon { font-size: 1.2rem; margin-right: 10px; }
-        .meal-text { color: var(--text-main); font-weight: 600; }
-        .meal-text.upgrade { color: #e74c3c; }
+        .meal-item { display: flex; align-items: center; font-size: 0.9rem; background: white; padding: 8px; border-radius: 6px; border: 1px solid #eee; }
+        .meal-icon { font-size: 1.1rem; margin-right: 10px; width: 25px; text-align: center; }
+        .meal-text { color: var(--text-main); font-weight: 500; }
+        .meal-text.upgrade { color: #e74c3c; font-weight: 700; }
 
         /* Back to top */
         #backToTop {
-            position: fixed; bottom: 30px; right: 20px;
+            position: fixed; bottom: 25px; right: 20px;
             background: var(--primary); color: white;
-            width: 55px; height: 55px; border-radius: 50%; border: none;
-            font-size: 24px; cursor: pointer; opacity: 0; pointer-events: none;
-            transition: all 0.3s; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 2000;
+            width: 45px; height: 45px; border-radius: 50%; border: none;
+            font-size: 20px; cursor: pointer; opacity: 0; pointer-events: none;
+            transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 2000;
             display: flex; align-items: center; justify-content: center;
         }
-        #backToTop:hover { background-color: var(--secondary); transform: translateY(-5px); }
         #backToTop.show { opacity: 1; pointer-events: all; }
+
+        /* 平板與桌面微調 */
+        @media (min-width: 768px) {
+            .hero { padding: 60px 20px 120px; }
+            .hero h1 { font-size: 2.5rem; }
+            .info-grid { grid-template-columns: 1fr 1fr; }
+            .meals-grid { grid-template-columns: repeat(3, 1fr); }
+            .contact-box { flex-direction: row; }
+            .day-image-container { height: 250px; }
+            .day-header { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+        }
 
     </style>
 </head>
@@ -224,17 +232,17 @@
                     <span class="countdown-label">秒</span>
                 </div>
             </div>
-            <div id="trip-status" style="font-size: 1.8rem; font-weight: bold; margin: 30px 0; display:none; color: var(--accent); text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+            <div id="trip-status" style="font-size: 1.5rem; font-weight: bold; margin: 30px 0; display:none; color: var(--accent); text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
                 ✈️ 旅程進行中！
             </div>
         </div>
 
         <div class="contact-box">
             <div class="contact-item">
-                <span class="contact-icon">導</span> 隨團人員：胡宜 小姐 <a href="tel:0918776707" class="contact-phone">0918-776-707</a>
+                <span class="contact-icon">導</span> 隨團：胡宜 <a href="tel:0918776707" class="contact-phone">0918-776-707</a>
             </div>
             <div class="contact-item">
-                <span class="contact-icon">機</span> 送機人員：蕭譜軒 (一航) <a href="tel:0928251747" class="contact-phone">0928-251-747</a>
+                <span class="contact-icon">機</span> 送機：蕭譜軒 <a href="tel:0928251747" class="contact-phone">0928-251-747</a>
             </div>
         </div>
     </header>
@@ -254,39 +262,34 @@
 
         <div class="info-grid">
             <div class="card">
-                <h3>✈️ 航班資訊與動態</h3>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px;">
-                    <div>
-                        <span style="font-weight: 700; color: var(--primary); font-size: 1.1rem;">11/24 去程</span><br>
-                        <span style="color: #7f8c8d; font-size: 0.9rem;">桃園 ➔ 澳門</span>
+                <h3>✈️ 航班資訊 (點擊追蹤)</h3>
+                <div style="margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 15px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span style="font-weight: 700; color: var(--primary);">11/24 去程</span>
+                        <span style="color: var(--secondary); font-weight: bold;">08:35</span>
                     </div>
-                    <div style="text-align: right;">
-                        <a href="https://www.flightradar24.com/data/flights/jx201" target="_blank" class="flight-btn">
-                            JX-201 <i class="fa-solid fa-plane-circle-check"></i>
-                        </a><br>
-                        <span style="color: var(--secondary); font-weight: bold;">08:35 / 10:35</span>
-                    </div>
+                    <a href="https://www.flightradar24.com/data/flights/jx201" target="_blank" class="flight-btn">
+                        JX-201 桃園 ➔ 澳門 <i class="fa-solid fa-plane"></i>
+                    </a>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <span style="font-weight: 700; color: var(--primary); font-size: 1.1rem;">12/01 回程</span><br>
-                        <span style="color: #7f8c8d; font-size: 0.9rem;">澳門 ➔ 桃園</span>
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span style="font-weight: 700; color: var(--primary);">12/01 回程</span>
+                        <span style="color: var(--secondary); font-weight: bold;">20:35</span>
                     </div>
-                    <div style="text-align: right;">
-                        <a href="https://www.flightradar24.com/data/flights/jx206" target="_blank" class="flight-btn">
-                            JX-206 <i class="fa-solid fa-plane-circle-check"></i>
-                        </a><br>
-                        <span style="color: var(--secondary); font-weight: bold;">20:35 / 22:25</span>
-                    </div>
+                    <a href="https://www.flightradar24.com/data/flights/jx206" target="_blank" class="flight-btn">
+                        JX-206 澳門 ➔ 桃園 <i class="fa-solid fa-plane"></i>
+                    </a>
                 </div>
             </div>
+            
             <div class="card">
                 <h3>🏨 住宿重點</h3>
                 <ul style="padding-left: 20px; margin: 0; color: var(--text-desc);">
-                    <li style="margin-bottom: 8px;"><strong>長沙</strong>：希爾頓歡朋月亮島店 (2晚) <span style="font-size: 0.8rem; background: #f1c40f; color: #fff; padding: 1px 5px; border-radius: 3px;">升等</span></li>
+                    <li style="margin-bottom: 8px;"><strong>長沙</strong>：希爾頓歡朋 (2晚) <span style="font-size: 0.7rem; background: #f1c40f; color: #fff; padding: 1px 4px; border-radius: 3px;">升等</span></li>
                     <li style="margin-bottom: 8px;"><strong>常德</strong>：澤雲大酒店</li>
-                    <li style="margin-bottom: 8px;"><strong>鳳凰</strong>：鳳鳴天下國際酒店</li>
-                    <li><strong>張家界</strong>：戴斯溫德姆系列 (3晚)</li>
+                    <li style="margin-bottom: 8px;"><strong>鳳凰</strong>：鳳鳴天下</li>
+                    <li><strong>張家界</strong>：戴斯溫德姆 (3晚)</li>
                 </ul>
             </div>
         </div>
@@ -307,11 +310,11 @@
                     <li class="itinerary-item">
                         <span class="spot-name">05:30 集合</span>
                         <p class="spot-desc">請於桃園國際機場第一航廈「星宇航空」團體櫃檯集合，準備搭機。請務必攜帶護照與台胞證。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">搭機前往澳門 (JX-201)</span>
                         <p class="spot-desc">飛往東方蒙地卡羅「澳門」，隨後經珠海搭乘動車前往「星城」長沙。動車上禁止攜帶水果刀等銳利物品。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">長沙簡介</span>
                         <p class="spot-desc">湖南省會，政治、經濟、文化中心，今晚入住月亮島希爾頓歡朋酒店。</p>
@@ -349,19 +352,19 @@
                     <li class="itinerary-item">
                         <span class="spot-name">長沙簡牘博物館</span>
                         <p class="spot-desc">中國唯一集簡牘保護研究的專題博物館，採三國高臺建築風格，收藏15萬餘件文物。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">橘子洲頭 (含電瓶車)</span>
                         <p class="spot-desc">被稱為「中國第一洲」，四面環水，不僅風景清幽，更是古代詩人鍾愛之地。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">常德：柳葉湖與詩牆</span>
-                        <p class="spot-desc">遊覽形似柳葉的中國最大城市湖泊之一；參觀獲金氏紀錄「世界最長詩書畫刻藝術牆」，集當代名家詩詞書法於一體。</p>
-                        </li>
+                        <p class="spot-desc">遊覽形似柳葉的中國最大城市湖泊之一；參觀獲金氏紀錄「世界最長詩書畫刻藝術牆」。</p>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">德國小鎮與穿紫河</span>
                         <p class="spot-desc">體驗原汁原味的德式建築街區，並漫步於千年古運河「穿紫河」畔，感受紫菱如錦的意境。</p>
-                        </li>
+                    </li>
                 </ul>
 
                 <div class="hotel-block">
@@ -395,19 +398,19 @@
                     <li class="itinerary-item">
                         <span class="spot-name">桃花源古鎮</span>
                         <p class="spot-desc">展現陶淵明隱世文化的大型人文主題建築群，位於魚米之鄉常德，重現《桃花源記》場景。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">鳳凰古城巡禮</span>
                         <p class="spot-desc">中國最美小城。參觀沈從文故居（南方典型的四合院）、萬壽宮（雕琢玲瓏的殿宇樓臺）。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">贈送：沱江泛舟</span>
                         <p class="spot-desc">乘船遊覽沱江，體驗水上威尼斯的浪漫氣氛，欣賞兩岸極富苗族特色的吊腳樓群。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">鳳凰夜景</span>
                         <p class="spot-desc">夜間的鳳凰燈火輝煌，流光溢彩，倒映在沱江之中，如夢似幻，是攝影愛好者的天堂。</p>
-                        </li>
+                    </li>
                 </ul>
 
                 <div class="hotel-block">
@@ -441,15 +444,15 @@
                     <li class="itinerary-item">
                         <span class="spot-name">漫步鳳凰古城</span>
                         <p class="spot-desc">走過青石板街，登上東門城樓與北門城樓，穿越歷史悠久的虹橋風雨樓，感受古城晨間的霧氣。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">芙蓉鎮 (含電瓶車+遊船)</span>
                         <p class="spot-desc">原名王村，掛在瀑布上的千年古鎮，因電影《芙蓉鎮》而聞名，擁有宏偉瀑布穿鎮而過。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">張家界 72 奇樓</span>
                         <p class="spot-desc">全世界最高的沖天吊腳樓，高109.9米，體驗夜景燈光秀與篝火晚會，如夢似幻的視覺饗宴。</p>
-                        </li>
+                    </li>
                 </ul>
 
                 <div class="hotel-block">
@@ -483,19 +486,19 @@
                     <li class="itinerary-item">
                         <span class="spot-name">天門山國家森林公園 (含纜車)</span>
                         <p class="spot-desc">搭乘世界最長高山客運索道 (7500公尺)，俯瞰通天大道（天下第一公路奇觀）與絕壁千仞。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天空之路：玻璃棧道與鬼谷棧道</span>
                         <p class="spot-desc">挑戰懸於峭壁之上的透明玻璃棧道（含鞋套），以及全線立於萬丈懸崖中間的鬼谷棧道，體驗雲端漫步。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天門洞 (含穿山扶梯)</span>
                         <p class="spot-desc">世界海拔最高的天然穿山溶洞，高131.5米，被視為直達天庭的門戶，氣勢磅礡。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">黃龍洞 (VIP禮遇)</span>
                         <p class="spot-desc">中國最大溶洞之一，安排VIP電瓶車與專屬通道，欣賞定海神針與龍宮奇景，免去排隊之苦。</p>
-                        </li>
+                    </li>
                 </ul>
 
                 <div class="hotel-block">
@@ -529,23 +532,23 @@
                     <li class="itinerary-item">
                         <span class="spot-name">百龍天梯 (包梯上行)</span>
                         <p class="spot-desc">世界最高戶外電梯，88秒直達326米山頂，被譽為「東方艾菲爾鐵塔」。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">袁家界：哈利路亞懸浮山</span>
                         <p class="spot-desc">電影《阿凡達》取景地（原名南天一柱），觀賞天下第一橋、迷魂台，體驗奇峰三千的震撼。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天子山與賀龍公園</span>
                         <p class="spot-desc">有「擴大的盆景」之稱，搭乘纜車下山，途中欣賞御筆鋒、西海石林，景色原始自然。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">寶峰湖 (VIP遊船)</span>
                         <p class="spot-desc">高峽平湖絕景，世界自然遺產，乘船遊湖欣賞山水與民俗風情。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天門狐仙秀</span>
                         <p class="spot-desc">世界首台高山峽谷實景音樂劇，視覺特效震撼，演繹感人的人狐之戀。</p>
-                        </li>
+                    </li>
                 </ul>
 
                 <div class="hotel-block">
@@ -579,15 +582,15 @@
                     <li class="itinerary-item">
                         <span class="spot-name">超級文和友</span>
                         <p class="spot-desc">網紅打卡地，這座建築還原了80年代的老長沙社區場景，充滿懷舊氛圍與特色小吃。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">IFS 國金中心與步行街</span>
                         <p class="spot-desc">長沙最繁華的地段，擁有452米高的第一高樓，彙集全國特色小吃與時尚購物。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">晚餐升等：喜庭海鮮自助火鍋</span>
                         <p class="spot-desc">價值 158 RMB/人的特別升級，享受鮮切牛肉與海鮮美味。</p>
-                        </li>
+                    </li>
                 </ul>
 
                 <div class="hotel-block">
@@ -621,15 +624,15 @@
                     <li class="itinerary-item">
                         <span class="spot-name">圓明新園</span>
                         <p class="spot-desc">按1:1比例精選北京圓明園18景建造，重現皇家園林的氣勢。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">北山大院楊氏大宗祠</span>
                         <p class="spot-desc">建於1868年，珠海最大的民間祠堂，傳聞是楊家將後人所建，古色古香。</p>
-                        </li>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">搭機返台 (JX-206)</span>
                         <p class="spot-desc">前往澳門機場，搭機返回溫暖的家 (22:25 抵達桃園)。</p>
-                        </li>
+                    </li>
                 </ul>
 
                 <div class="hotel-block">
