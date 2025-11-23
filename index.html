@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>星動張家界 8 日遊 - 最終確認版</title>
+    <title>星動張家界 8 日遊 - 尊爵行程表</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,7 +114,9 @@
         
         .flight-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
         .flight-title { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
-        .flight-code { background: #e8f6f3; color: var(--secondary); padding: 4px 10px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; text-decoration: none; }
+        /* FlightAware 連結樣式 */
+        .flight-code { background: #0b2e4a; color: #fff; padding: 4px 10px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; text-decoration: none; transition: all 0.3s; }
+        .flight-code:hover { background: #00a0e2; } /* FlightAware Blue */
         
         .flight-route { display: flex; justify-content: space-between; align-items: center; text-align: center; }
         .airport-code { font-size: 1.5rem; font-weight: 900; color: var(--text-main); display: block; }
@@ -271,7 +273,7 @@
             <div class="flight-card">
                 <div class="flight-header">
                     <div class="flight-title">🛫 去程航班 (11/24)</div>
-                    <a href="https://www.flightradar24.com/data/flights/jx201" target="_blank" class="flight-code">
+                    <a href="https://www.flightaware.com/live/flight/JX201" target="_blank" class="flight-code">
                         JX-201 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </div>
@@ -296,7 +298,7 @@
             <div class="flight-card" style="border-left-color: var(--secondary);">
                 <div class="flight-header">
                     <div class="flight-title">🛬 回程航班 (12/01)</div>
-                    <a href="https://www.flightradar24.com/data/flights/jx206" target="_blank" class="flight-code">
+                    <a href="https://www.flightaware.com/live/flight/JX206" target="_blank" class="flight-code">
                         JX-206 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </div>
@@ -349,7 +351,7 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">搭機前往澳門</span>
-                        <p class="spot-desc">搭乘 JX-201 (08:35-10:35) 飛往澳門，隨後經珠海搭乘動車前往長沙 [cite: 7, 11]。</p>
+                        <p class="spot-desc">搭乘 JX-201 (08:35-10:35) 飛往澳門，隨後經珠海搭乘動車前往長沙。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">入住希爾頓歡朋</span>
