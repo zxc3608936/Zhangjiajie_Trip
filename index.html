@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>星動張家界 8 日遊 - 尊爵行程表</title>
+    <title>星動張家界 8 日遊 - 最終確認版</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛰️</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +37,7 @@
         /* --- Hero Header --- */
         .hero {
             background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.5)), 
-                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Zhangjiajie_National_Forest_Park.jpg/1280px-Zhangjiajie_National_Forest_Park.jpg') center/cover no-repeat fixed;
+                        url('https://images.unsplash.com/photo-1516903564305-33792b045de6?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;
             color: white;
             padding: 40px 20px 90px;
             text-align: center;
@@ -45,11 +45,11 @@
         }
 
         .hero h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1px; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .hero p { color: var(--accent); font-size: 1rem; margin-top: 10px; font-weight: 500; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .hero p { color: var(--accent); font-size: 1rem; margin-top: 10px; font-weight: 500; }
 
         .countdown-container {
             margin: 20px auto;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             border-radius: 12px;
             padding: 10px 15px;
             display: inline-flex;
@@ -66,7 +66,7 @@
             font-size: 0.9rem; color: white;
         }
         .contact-item { 
-            background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; 
+            background: rgba(255,255,255,0.15); padding: 8px 20px; border-radius: 50px; 
             display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.2);
             backdrop-filter: blur(5px);
         }
@@ -114,8 +114,10 @@
         
         .flight-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
         .flight-title { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
+        
+        /* FlightAware Button */
         .flight-code { 
-            background: #0b2e4a; color: #fff; padding: 4px 12px; border-radius: 20px; 
+            background: #002F5D; color: #fff; padding: 4px 12px; border-radius: 20px; 
             font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; 
             text-decoration: none; transition: all 0.3s; 
         }
@@ -154,15 +156,33 @@
         }
         .day-card.today .today-badge { display: block; }
 
-        .day-image-container { height: 200px; overflow: hidden; position: relative; background-color: #eee; }
-        .day-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .day-card:hover .day-image { transform: scale(1.05); }
+        /* 圖片容器與備援樣式 */
+        .day-image-container { 
+            height: 200px; overflow: hidden; position: relative; 
+            background-color: #2c3e50; /* 預設深色背景 */
+            display: flex; align-items: center; justify-content: center;
+        }
+        .day-image { 
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: transform 0.5s ease; 
+            opacity: 0; animation: fadeIn 0.5s forwards; /* 載入動畫 */
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
         
+        /* 當圖片載入失敗時顯示的樣式 (透過 JS 控制) */
+        .day-image-fallback {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 3rem; display: none;
+        }
+
         .day-content { padding: 20px; }
         .day-header { margin-bottom: 20px; border-bottom: 1px solid #f1f1f1; padding-bottom: 15px; }
         .day-title { font-size: 1.3rem; font-weight: 800; color: var(--primary); margin: 0 0 5px 0; line-height: 1.3; }
         .day-date { color: white; background-color: var(--secondary); font-weight: 600; font-size: 0.9rem; padding: 4px 12px; border-radius: 4px; display: inline-block; }
 
+        /* 集合資訊 */
         .meeting-box {
             background-color: #fff8e1; border: 1px solid #ffe0b2; border-radius: 10px;
             padding: 15px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;
@@ -275,8 +295,8 @@
             <div class="flight-card">
                 <div class="flight-header">
                     <div class="flight-title">🛫 去程航班 (11/24)</div>
-                    <a href="https://www.flightaware.com/live/flight/JX201" target="_blank" class="flight-code">
-                        JX-201 <i class="fa-solid fa-location-arrow"></i>
+                    <a href="https://flightaware.com/live/flight/JX201" target="_blank" class="flight-code">
+                        JX-201 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </div>
                 <div class="flight-route">
@@ -300,8 +320,8 @@
             <div class="flight-card" style="border-left-color: var(--secondary);">
                 <div class="flight-header">
                     <div class="flight-title">🛬 回程航班 (12/01)</div>
-                    <a href="https://www.flightaware.com/live/flight/JX206" target="_blank" class="flight-code">
-                        JX-206 <i class="fa-solid fa-location-arrow"></i>
+                    <a href="https://flightaware.com/live/flight/JX206" target="_blank" class="flight-code">
+                        JX-206 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </div>
                 <div class="flight-route">
@@ -326,7 +346,8 @@
         <div id="d1" class="day-card" data-date="2025-11-24">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://cdn.pixabay.com/photo/2014/11/02/10/41/plane-513641_1280.jpg" alt="Travel Start" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/2c3e50/ffffff?text=Day+1+Departure'">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80" alt="Day 1" class="day-image" onerror="imgError(this, '🛫')">
+                <div class="day-image-fallback"><i class="fa-solid fa-plane-departure"></i></div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -378,7 +399,8 @@
         <div id="d2" class="day-card" data-date="2025-11-25">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Orange_Isle_Bridge.jpg/1280px-Orange_Isle_Bridge.jpg" alt="Changsha Culture" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/27ae60/ffffff?text=Day+2+Changsha'">
+                <img src="https://images.unsplash.com/photo-1563804808739-427c6433374d?auto=format&fit=crop&w=800&q=80" alt="Day 2" class="day-image" onerror="imgError(this, '🏛️')">
+                <div class="day-image-fallback"><i class="fa-solid fa-landmark"></i></div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -421,7 +443,8 @@
         <div id="d3" class="day-card" data-date="2025-11-26">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Fenghuang_Hunan_China_Tuojiang-River-01.jpg/1280px-Fenghuang_Hunan_China_Tuojiang-River-01.jpg" alt="Fenghuang" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/c0392b/ffffff?text=Day+3+Fenghuang'">
+                <img src="https://images.unsplash.com/photo-1568432988733-7269d2a6247e?auto=format&fit=crop&w=800&q=80" alt="Day 3" class="day-image" onerror="imgError(this, '🏮')">
+                <div class="day-image-fallback"><i class="fa-solid fa-water"></i></div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -464,7 +487,8 @@
         <div id="d4" class="day-card" data-date="2025-11-27">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://cdn.pixabay.com/photo/2016/11/21/17/41/waterfall-1846724_1280.jpg" alt="Waterfall Town" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/34495e/ffffff?text=Day+4+Zhangjiajie'">
+                <img src="https://images.unsplash.com/photo-1512813195386-6cf811ad3542?auto=format&fit=crop&w=800&q=80" alt="Day 4" class="day-image" onerror="imgError(this, '🌊')">
+                <div class="day-image-fallback"><i class="fa-solid fa-water"></i></div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -503,7 +527,8 @@
         <div id="d5" class="day-card" data-date="2025-11-28">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Tianmen_Mountain_99_bends.jpg/1280px-Tianmen_Mountain_99_bends.jpg" alt="Tianmen Mountain" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/7f8c8d/ffffff?text=Day+5+Tianmen'">
+                <img src="https://images.unsplash.com/photo-1504235888440-da641c78503c?auto=format&fit=crop&w=800&q=80" alt="Day 5" class="day-image" onerror="imgError(this, '🚠')">
+                <div class="day-image-fallback"><i class="fa-solid fa-mountain"></i></div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -546,7 +571,8 @@
         <div id="d6" class="day-card" data-date="2025-11-29">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Southern_Sky_Column.jpg/1280px-Southern_Sky_Column.jpg" alt="Avatar Mountains" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/27ae60/ffffff?text=Day+6+Avatar+Mtn'">
+                <img src="https://images.unsplash.com/photo-1470075801209-17f9ec0cade6?auto=format&fit=crop&w=800&q=80" alt="Day 6" class="day-image" onerror="imgError(this, '🏔️')">
+                <div class="day-image-fallback"><i class="fa-solid fa-mountain-sun"></i></div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -593,7 +619,8 @@
         <div id="d7" class="day-card" data-date="2025-11-30">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Wenheyou_in_Changsha.jpg/1280px-Wenheyou_in_Changsha.jpg" alt="Changsha Food" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/e67e22/ffffff?text=Day+7+Food'">
+                <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=800&q=80" alt="Day 7" class="day-image" onerror="imgError(this, '🍲')">
+                <div class="day-image-fallback"><i class="fa-solid fa-bowl-food"></i></div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -632,7 +659,8 @@
         <div id="d8" class="day-card" data-date="2025-12-01">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Beijing_New_Yuan_Ming_Palace_01.JPG/1280px-Beijing_New_Yuan_Ming_Palace_01.JPG" alt="Chinese Garden" class="day-image" onerror="this.src='https://via.placeholder.com/800x400/95a5a6/ffffff?text=Day+8+Return'">
+                <img src="https://images.unsplash.com/photo-1582653380436-988a9fa93690?auto=format&fit=crop&w=800&q=80" alt="Day 8" class="day-image" onerror="imgError(this, '🏠')">
+                <div class="day-image-fallback"><i class="fa-solid fa-house"></i></div>
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -679,9 +707,23 @@
         });
         backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+        // 圖片載入失敗時的處理函數
+        function imgError(image, iconChar) {
+            image.style.display = 'none'; // 隱藏破圖
+            const fallback = image.nextElementSibling;
+            if (fallback) {
+                fallback.style.display = 'flex'; // 顯示備援圖示
+                fallback.innerHTML = `<div style="text-align:center"><div style="font-size:3rem">${iconChar}</div><div style="font-size:1rem;opacity:0.8;margin-top:5px">Image Loading...</div></div>`;
+            }
+        }
+
         function initTravelApp() {
-            // 測試模式開關
+            // =========================================
+            // 🔧 測試模式開關
+            // true = 強制顯示 2025-11-24 為今日 (方便您現在檢查)
+            // false = 依照實際日期 (出發時請改為 false)
             const testMode = true; 
+            // =========================================
 
             const tripStartDate = new Date("2025-11-24T05:30:00").getTime();
             const tripEndDate = new Date("2025-12-01T23:59:59").getTime();
