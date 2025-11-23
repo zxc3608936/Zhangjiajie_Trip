@@ -34,29 +34,19 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Hero Header (CSS Pattern) --- */
+        /* --- Hero Header --- */
         .hero {
-            /* 使用 CSS 漸層代替背景圖，確保顯示 */
-            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            /* 使用內嵌 SVG 作為背景，確保不破圖 */
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232c3e50'/%3E%3Cstop offset='100%25' stop-color='%234ca1af'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3Cpath d='M0,100 Q50,50 100,100 T200,100' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='2'/%3E%3C/svg%3E");
+            background-size: cover;
             color: white;
             padding: 30px 20px 80px;
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-        
-        /* 增加一點背景紋理 */
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 20%),
-                              radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 20%);
-            pointer-events: none;
         }
 
-        .hero h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1px; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative; }
-        .hero p { color: var(--accent); font-size: 1rem; margin-top: 10px; font-weight: 500; position: relative; }
+        .hero h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1px; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .hero p { color: var(--accent); font-size: 1rem; margin-top: 10px; font-weight: 500; }
 
         .countdown-container {
             margin: 20px auto;
@@ -67,8 +57,7 @@
             gap: 15px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-            position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
         .countdown-item { display: flex; flex-direction: column; align-items: center; min-width: 40px; }
         .countdown-number { font-size: 1.5rem; font-weight: 700; color: #fff; line-height: 1; }
@@ -76,10 +65,10 @@
 
         .contact-box {
             display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;
-            font-size: 0.9rem; color: white; position: relative;
+            font-size: 0.9rem; color: white;
         }
         .contact-item { 
-            background: rgba(0,0,0,0.3); padding: 8px 20px; border-radius: 50px; 
+            background: rgba(0,0,0,0.6); padding: 8px 20px; border-radius: 50px; 
             display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.1);
             width: fit-content;
         }
@@ -139,7 +128,7 @@
             overflow: hidden;
             transition: transform 0.3s ease;
             border: 2px solid transparent;
-            position: relative; /* 關鍵定位點 */
+            position: relative; 
         }
         
         @keyframes pulse-border {
@@ -150,54 +139,18 @@
 
         .day-card.today { border-color: var(--highlight-border); animation: pulse-border 2s infinite; }
         
-        /* 標籤定位修正 */
         .today-badge { 
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: #e74c3c;
-            color: white;
-            padding: 6px 15px;
+            position: absolute; top: 0; right: 0;
+            background: #e74c3c; color: white; padding: 6px 15px;
             border-bottom-left-radius: 16px;
-            font-weight: bold;
-            font-size: 0.85rem;
-            z-index: 20;
-            display: none;
+            font-weight: bold; font-size: 0.85rem; z-index: 20; display: none;
             box-shadow: -2px 2px 5px rgba(0,0,0,0.1);
         }
         .day-card.today .today-badge { display: block; }
 
-        /* --- CSS Generated Images (意境圖) --- */
-        .day-visual {
-            height: 160px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .visual-icon {
-            font-size: 4rem;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-            z-index: 2;
-            transition: transform 0.3s;
-        }
-        
-        .day-card:hover .visual-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        /* 各日期的背景漸層設計 */
-        .visual-d1 { background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); } /* 飛機藍 */
-        .visual-d2 { background: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); } /* 柳葉綠 */
-        .visual-d3 { background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%); } /* 古城紅紫 */
-        .visual-d4 { background: linear-gradient(120deg, #4facfe 0%, #00f2fe 100%); } /* 瀑布藍 */
-        .visual-d5 { background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); } /* 天門山雲霧 */
-        .visual-d6 { background: linear-gradient(120deg, #0ba360 0%, #3cba92 100%); } /* 阿凡達山林 */
-        .visual-d7 { background: linear-gradient(120deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); } /* 長沙美食 */
-        .visual-d8 { background: linear-gradient(120deg, #e2ebf0 0%, #cfd9df 100%); } /* 回家 */
+        /* --- Image Container (SVG) --- */
+        .day-image-container { height: 200px; width: 100%; overflow: hidden; position: relative; border-bottom: 1px solid #eee; }
+        .day-image { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         .day-content { padding: 20px; }
 
@@ -254,7 +207,6 @@
             .info-grid { grid-template-columns: 1fr 1fr; }
             .meals-grid { grid-template-columns: repeat(3, 1fr); }
             .contact-box { flex-direction: row; }
-            .day-visual { height: 200px; }
             .day-header { flex-direction: row; align-items: flex-end; justify-content: space-between; }
         }
 
@@ -349,35 +301,32 @@
 
         <div id="d1" class="day-card" data-date="2025-11-24">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-visual visual-d1">
-                <div class="visual-icon">🛫</div>
+            <div class="day-image-container">
+                <img class="day-image" src="data:image/svg+xml,%3Csvg width='800' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233498db'/%3E%3Cstop offset='1' stop-color='%238e44ad'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g1)'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='40' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3E✈️ 出發：桃園 ➔ 長沙%3C/text%3E%3C/svg%3E" alt="Day 1 Image">
             </div>
             <div class="day-content">
                 <div class="day-header">
                     <h2 class="day-title">桃園 ➔ 澳門 ➔ 珠海 ➔ 長沙</h2>
                     <span class="day-date">11/24 (一)</span>
                 </div>
-                
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">05:30 集合</span>
                         <p class="spot-desc">請於桃園國際機場第一航廈「星宇航空」團體櫃檯集合，準備搭機。請務必攜帶護照與台胞證。</p>
-                    </li>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">搭機前往澳門 (JX-201)</span>
-                        <p class="spot-desc">飛往東方蒙地卡羅「澳門」，隨後經珠海搭乘動車前往「星城」長沙。動車上禁止攜帶水果刀等銳利物品。</p>
-                    </li>
+                        <p class="spot-desc">飛往東方蒙地卡羅「澳門」，隨後經珠海搭乘動車前往「星城」長沙。</p>
+                        </li>
                     <li class="itinerary-item">
-                        <span class="spot-name">長沙簡介</span>
-                        <p class="spot-desc">湖南省會，政治、經濟、文化中心，今晚入住月亮島希爾頓歡朋酒店。</p>
+                        <span class="spot-name">入住希爾頓歡朋</span>
+                        <p class="spot-desc">長沙月亮島希爾頓歡朋酒店，全新開幕，舒適住宿。</p>
                     </li>
                 </ul>
-                
                 <div class="hotel-block">
                     <span class="hotel-label">入住飯店</span>
                     <span class="hotel-val">希爾頓歡朋月亮島店</span>
                 </div>
-
                 <div class="meals-container">
                     <span class="meals-title">🍽️ 當日餐食</span>
                     <div class="meals-grid">
@@ -391,8 +340,8 @@
 
         <div id="d2" class="day-card" data-date="2025-11-25">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-visual visual-d2">
-                <div class="visual-icon">📜</div>
+            <div class="day-image-container">
+                <img class="day-image" src="data:image/svg+xml,%3Csvg width='800' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231abc9c'/%3E%3Cstop offset='1' stop-color='%2316a085'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g2)'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='40' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3E🌿 長沙簡牘 & 常德柳葉湖%3C/text%3E%3C/svg%3E" alt="Day 2 Image">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -402,27 +351,21 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">長沙簡牘博物館</span>
-                        <p class="spot-desc">中國唯一集簡牘保護研究的專題博物館，採三國高臺建築風格，收藏15萬餘件文物。</p>
-                    </li>
+                        <p class="spot-desc">中國唯一集簡牘保護研究的專題博物館，採三國高臺建築風格。</p>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">橘子洲頭 (含電瓶車)</span>
-                        <p class="spot-desc">被稱為「中國第一洲」，四面環水，不僅風景清幽，更是古代詩人鍾愛之地。</p>
-                    </li>
+                        <p class="spot-desc">被稱為「中國第一洲」，四面環水，風景清幽。</p>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">常德：柳葉湖與詩牆</span>
-                        <p class="spot-desc">遊覽形似柳葉的中國最大城市湖泊之一；參觀獲金氏紀錄「世界最長詩書畫刻藝術牆」。</p>
-                    </li>
-                    <li class="itinerary-item">
-                        <span class="spot-name">德國小鎮與穿紫河</span>
-                        <p class="spot-desc">體驗原汁原味的德式建築街區，並漫步於千年古運河「穿紫河」畔，感受紫菱如錦的意境。</p>
+                        <p class="spot-desc">中國最大城市湖泊之一，以及獲金氏紀錄「世界最長詩書畫刻藝術牆」。</p>
                     </li>
                 </ul>
-
                 <div class="hotel-block">
                     <span class="hotel-label">入住飯店</span>
                     <span class="hotel-val">常德澤雲大酒店</span>
                 </div>
-
                 <div class="meals-container">
                     <span class="meals-title">🍽️ 當日餐食</span>
                     <div class="meals-grid">
@@ -436,8 +379,8 @@
 
         <div id="d3" class="day-card" data-date="2025-11-26">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-visual visual-d3">
-                <div class="visual-icon">🏮</div>
+            <div class="day-image-container">
+                <img class="day-image" src="data:image/svg+xml,%3Csvg width='800' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23c0392b'/%3E%3Cstop offset='1' stop-color='%238e44ad'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g3)'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='40' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3E🏮 鳳凰古城 & 沱江夜景%3C/text%3E%3C/svg%3E" alt="Day 3 Image">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -447,27 +390,21 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">桃花源古鎮</span>
-                        <p class="spot-desc">展現陶淵明隱世文化的大型人文主題建築群，位於魚米之鄉常德，重現《桃花源記》場景。</p>
-                    </li>
-                    <li class="itinerary-item">
-                        <span class="spot-name">鳳凰古城巡禮</span>
-                        <p class="spot-desc">中國最美小城。參觀沈從文故居（南方典型的四合院）、萬壽宮（雕琢玲瓏的殿宇樓臺）。</p>
+                        <p class="spot-desc">展現陶淵明隱世文化的大型人文主題建築群。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">贈送：沱江泛舟</span>
-                        <p class="spot-desc">乘船遊覽沱江，體驗水上威尼斯的浪漫氣氛，欣賞兩岸極富苗族特色的吊腳樓群。</p>
+                        <p class="spot-desc">乘船遊覽沱江，體驗水上威尼斯的浪漫氣氛。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">鳳凰夜景</span>
-                        <p class="spot-desc">夜間的鳳凰燈火輝煌，流光溢彩，倒映在沱江之中，如夢似幻，是攝影愛好者的天堂。</p>
+                        <p class="spot-desc">夜間的鳳凰燈火輝煌，流光溢彩，如夢似幻。</p>
                     </li>
                 </ul>
-
                 <div class="hotel-block">
                     <span class="hotel-label">入住飯店</span>
                     <span class="hotel-val">鳳鳴天下國際酒店</span>
                 </div>
-
                 <div class="meals-container">
                     <span class="meals-title">🍽️ 當日餐食</span>
                     <div class="meals-grid">
@@ -481,8 +418,8 @@
 
         <div id="d4" class="day-card" data-date="2025-11-27">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-visual visual-d4">
-                <div class="visual-icon">🌊</div>
+            <div class="day-image-container">
+                <img class="day-image" src="data:image/svg+xml,%3Csvg width='800' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g4' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2334495e'/%3E%3Cstop offset='1' stop-color='%232c3e50'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g4)'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='40' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3E🌊 芙蓉鎮 & 72奇樓%3C/text%3E%3C/svg%3E" alt="Day 4 Image">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -492,23 +429,21 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">漫步鳳凰古城</span>
-                        <p class="spot-desc">走過青石板街，登上東門城樓與北門城樓，穿越歷史悠久的虹橋風雨樓，感受古城晨間的霧氣。</p>
-                    </li>
+                        <p class="spot-desc">走過青石板街，登上東門城樓與北門城樓。</p>
+                        </li>
                     <li class="itinerary-item">
                         <span class="spot-name">芙蓉鎮 (含電瓶車+遊船)</span>
-                        <p class="spot-desc">原名王村，掛在瀑布上的千年古鎮，因電影《芙蓉鎮》而聞名，擁有宏偉瀑布穿鎮而過。</p>
+                        <p class="spot-desc">掛在瀑布上的千年古鎮，因電影《芙蓉鎮》而聞名。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">張家界 72 奇樓</span>
-                        <p class="spot-desc">全世界最高的沖天吊腳樓，高109.9米，體驗夜景燈光秀與篝火晚會，如夢似幻的視覺饗宴。</p>
+                        <p class="spot-desc">全世界最高的沖天吊腳樓，體驗夜景燈光秀與篝火晚會。</p>
                     </li>
                 </ul>
-
                 <div class="hotel-block">
                     <span class="hotel-label">入住飯店</span>
                     <span class="hotel-val">張家界戴斯溫德姆</span>
                 </div>
-
                 <div class="meals-container">
                     <span class="meals-title">🍽️ 當日餐食</span>
                     <div class="meals-grid">
@@ -522,8 +457,8 @@
 
         <div id="d5" class="day-card" data-date="2025-11-28">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-visual visual-d5">
-                <div class="visual-icon">🚠</div>
+            <div class="day-image-container">
+                <img class="day-image" src="data:image/svg+xml,%3Csvg width='800' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g5' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237f8c8d'/%3E%3Cstop offset='1' stop-color='%23bdc3c7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g5)'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='40' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3E🚠 天門山絕景%3C/text%3E%3C/svg%3E" alt="Day 5 Image">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -532,28 +467,26 @@
                 </div>
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
-                        <span class="spot-name">天門山國家森林公園 (含纜車)</span>
-                        <p class="spot-desc">搭乘世界最長高山客運索道 (7500公尺)，俯瞰通天大道（天下第一公路奇觀）與絕壁千仞。</p>
+                        <span class="spot-name">天門山國家森林公園</span>
+                        <p class="spot-desc">搭乘世界最長高山客運索道，俯瞰通天大道。</p>
                     </li>
                     <li class="itinerary-item">
-                        <span class="spot-name">天空之路：玻璃棧道與鬼谷棧道</span>
-                        <p class="spot-desc">挑戰懸於峭壁之上的透明玻璃棧道（含鞋套），以及全線立於萬丈懸崖中間的鬼谷棧道，體驗雲端漫步。</p>
+                        <span class="spot-name">天空之路：玻璃棧道</span>
+                        <p class="spot-desc">挑戰懸於峭壁之上的透明玻璃棧道（含鞋套），體驗雲端漫步。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天門洞 (含穿山扶梯)</span>
-                        <p class="spot-desc">世界海拔最高的天然穿山溶洞，高131.5米，被視為直達天庭的門戶，氣勢磅礡。</p>
+                        <p class="spot-desc">世界海拔最高的天然穿山溶洞，被視為直達天庭的門戶。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">黃龍洞 (VIP禮遇)</span>
-                        <p class="spot-desc">中國最大溶洞之一，安排VIP電瓶車與專屬通道，欣賞定海神針與龍宮奇景，免去排隊之苦。</p>
+                        <p class="spot-desc">中國最大溶洞之一，安排VIP電瓶車與專屬通道。</p>
                     </li>
                 </ul>
-
                 <div class="hotel-block">
                     <span class="hotel-label">入住飯店</span>
                     <span class="hotel-val">武陵源戴斯温德姆</span>
                 </div>
-
                 <div class="meals-container">
                     <span class="meals-title">🍽️ 當日餐食</span>
                     <div class="meals-grid">
@@ -567,8 +500,8 @@
 
         <div id="d6" class="day-card" data-date="2025-11-29">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-visual visual-d6">
-                <div class="visual-icon">⛰️</div>
+            <div class="day-image-container">
+                <img class="day-image" src="data:image/svg+xml,%3Csvg width='800' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g6' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2327ae60'/%3E%3Cstop offset='1' stop-color='%232ecc71'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g6)'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='40' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3E🏔️ 阿凡達秘境%3C/text%3E%3C/svg%3E" alt="Day 6 Image">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -578,31 +511,25 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">百龍天梯 (包梯上行)</span>
-                        <p class="spot-desc">世界最高戶外電梯，88秒直達326米山頂，被譽為「東方艾菲爾鐵塔」。</p>
+                        <p class="spot-desc">世界最高戶外電梯，88秒直達326米山頂。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">袁家界：哈利路亞懸浮山</span>
-                        <p class="spot-desc">電影《阿凡達》取景地（原名南天一柱），觀賞天下第一橋、迷魂台，體驗奇峰三千的震撼。</p>
-                    </li>
-                    <li class="itinerary-item">
-                        <span class="spot-name">天子山與賀龍公園</span>
-                        <p class="spot-desc">有「擴大的盆景」之稱，搭乘纜車下山，途中欣賞御筆鋒、西海石林，景色原始自然。</p>
+                        <p class="spot-desc">電影《阿凡達》取景地，觀賞天下第一橋、迷魂台。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">寶峰湖 (VIP遊船)</span>
-                        <p class="spot-desc">高峽平湖絕景，世界自然遺產，乘船遊湖欣賞山水與民俗風情。</p>
+                        <p class="spot-desc">高峽平湖絕景，世界自然遺產，乘船遊湖欣賞山水。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天門狐仙秀</span>
-                        <p class="spot-desc">世界首台高山峽谷實景音樂劇，視覺特效震撼，演繹感人的人狐之戀。</p>
+                        <p class="spot-desc">世界首台高山峽谷實景音樂劇，視覺特效震撼。</p>
                     </li>
                 </ul>
-
                 <div class="hotel-block">
                     <span class="hotel-label">入住飯店</span>
                     <span class="hotel-val">張家界戴斯溫德姆</span>
                 </div>
-
                 <div class="meals-container">
                     <span class="meals-title">🍽️ 當日餐食</span>
                     <div class="meals-grid">
@@ -616,8 +543,8 @@
 
         <div id="d7" class="day-card" data-date="2025-11-30">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-visual visual-d7">
-                <div class="visual-icon">🍲</div>
+            <div class="day-image-container">
+                <img class="day-image" src="data:image/svg+xml,%3Csvg width='800' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g7' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23e67e22'/%3E%3Cstop offset='1' stop-color='%23f1c40f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g7)'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='40' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3E🍲 超級文和友 & 美食%3C/text%3E%3C/svg%3E" alt="Day 7 Image">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -627,23 +554,21 @@
                 <ul class="itinerary-list">
                     <li class="itinerary-item">
                         <span class="spot-name">超級文和友</span>
-                        <p class="spot-desc">網紅打卡地，這座建築還原了80年代的老長沙社區場景，充滿懷舊氛圍與特色小吃。</p>
+                        <p class="spot-desc">網紅打卡地，還原了80年代的老長沙社區場景。</p>
                     </li>
                     <li class="itinerary-item">
-                        <span class="spot-name">IFS 國金中心與步行街</span>
-                        <p class="spot-desc">長沙最繁華的地段，擁有452米高的第一高樓，彙集全國特色小吃與時尚購物。</p>
+                        <span class="spot-name">IFS 國金中心</span>
+                        <p class="spot-desc">長沙最繁華的地段，擁有452米高的第一高樓。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">晚餐升等：喜庭海鮮自助火鍋</span>
                         <p class="spot-desc">價值 158 RMB/人的特別升級，享受鮮切牛肉與海鮮美味。</p>
                     </li>
                 </ul>
-
                 <div class="hotel-block">
                     <span class="hotel-label">入住飯店</span>
                     <span class="hotel-val">希爾頓歡朋月亮島店</span>
                 </div>
-
                 <div class="meals-container">
                     <span class="meals-title">🍽️ 當日餐食</span>
                     <div class="meals-grid">
@@ -657,8 +582,8 @@
 
         <div id="d8" class="day-card" data-date="2025-12-01">
             <div class="today-badge">📍 今日行程</div>
-            <div class="day-visual visual-d8">
-                <div class="visual-icon">🏠</div>
+            <div class="day-image-container">
+                <img class="day-image" src="data:image/svg+xml,%3Csvg width='800' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g8' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2395a5a6'/%3E%3Cstop offset='1' stop-color='%23bdc3c7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g8)'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='40' fill='white' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3E🏠 圓明新園 & 溫暖的家%3C/text%3E%3C/svg%3E" alt="Day 8 Image">
             </div>
             <div class="day-content">
                 <div class="day-header">
@@ -672,19 +597,17 @@
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">北山大院楊氏大宗祠</span>
-                        <p class="spot-desc">建於1868年，珠海最大的民間祠堂，傳聞是楊家將後人所建，古色古香。</p>
+                        <p class="spot-desc">建於1868年，珠海最大的民間祠堂。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">搭機返台 (JX-206)</span>
                         <p class="spot-desc">前往澳門機場，搭機返回溫暖的家 (22:25 抵達桃園)。</p>
                     </li>
                 </ul>
-
                 <div class="hotel-block">
                     <span class="hotel-label">住宿</span>
                     <span class="hotel-val">甜蜜溫暖的家</span>
                 </div>
-
                 <div class="meals-container">
                     <span class="meals-title">🍽️ 當日餐食</span>
                     <div class="meals-grid">
