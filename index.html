@@ -22,15 +22,10 @@
             --bg-color: #f4f6f8;
             --text-main: #2c3e50;
             --text-desc: #57606f;
-            --nav-height: 60px; /* 手機版導覽列高度 */
+            --nav-height: 60px;
         }
 
-        html { 
-            scroll-behavior: smooth; 
-            /* 修正錨點定位，避免被 Header 遮住 */
-            scroll-padding-top: 140px; 
-        }
-        
+        html { scroll-behavior: smooth; scroll-padding-top: 140px; }
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background-color: var(--bg-color);
@@ -49,7 +44,7 @@
             padding: 30px 20px 80px;
             text-align: center;
             position: relative;
-            background-color: #2c3e50; /* Fallback */
+            background-color: #2c3e50;
         }
 
         .hero h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1px; font-weight: 900; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
@@ -138,17 +133,13 @@
             transition: transform 0.3s ease; border: 2px solid transparent;
         }
         
-        /* 今日高亮動畫 */
         @keyframes pulse-border {
             0% { border-color: var(--highlight-border); box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.4); }
             70% { border-color: var(--highlight-border); box-shadow: 0 0 0 10px rgba(230, 126, 34, 0); }
             100% { border-color: var(--highlight-border); box-shadow: 0 0 0 0 rgba(230, 126, 34, 0); }
         }
 
-        .day-card.today { 
-            border-color: var(--highlight-border); 
-            animation: pulse-border 2s infinite;
-        }
+        .day-card.today { border-color: var(--highlight-border); animation: pulse-border 2s infinite; }
         
         .today-badge { 
             position: absolute; top: 15px; right: 15px; 
@@ -404,7 +395,7 @@
         <div id="d3" class="day-card" data-date="2025-11-26">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1598890777032-bde835443c77?q=80&w=2070" alt="Fenghuang" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1568432988733-7269d2a6247e?q=80&w=2026'">
+                <img src="https://images.unsplash.com/photo-1568432988733-7269d2a6247e?q=80&w=2026&auto=format&fit=crop" alt="Fenghuang" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1543082933-a94b425d9602?q=80&w=2070'">
                 <div class="day-overlay"></div>
             </div>
             <div class="day-content">
@@ -492,7 +483,7 @@
         <div id="d5" class="day-card" data-date="2025-11-28">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1631614827523-237366b43722?q=80&w=2070" alt="Tianmen Mountain" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1504235888440-da641c78503c?q=80&w=2070'">
+                <img src="https://images.unsplash.com/photo-1548073862-211a7667d266?q=80&w=2066&auto=format&fit=crop" alt="Tianmen Mountain" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1504235888440-da641c78503c?q=80&w=2070'">
                 <div class="day-overlay"></div>
             </div>
             <div class="day-content">
@@ -507,7 +498,7 @@
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天空之路：玻璃棧道與鬼谷棧道</span>
-                        <p class="spot-desc">挑戰懸於峭壁之上的透明玻璃棧道（含鞋套），以及全線立於萬丈懸崖中間的鬼谷棧道。</p>
+                        <p class="spot-desc">挑戰懸於峭壁之上的透明玻璃棧道（含鞋套），以及全線立於萬丈懸崖中間的鬼谷棧道，體驗雲端漫步。</p>
                     </li>
                     <li class="itinerary-item">
                         <span class="spot-name">天門洞 (含穿山扶梯)</span>
@@ -630,7 +621,7 @@
         <div id="d8" class="day-card" data-date="2025-12-01">
             <div class="today-badge">📍 今日行程</div>
             <div class="day-image-container">
-                <img src="https://images.unsplash.com/photo-1518972458649-b0f242a64a69?q=80&w=2070&auto=format&fit=crop" alt="Chinese Garden" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1582653380436-988a9fa93690?q=80&w=2070'">
+                <img src="https://images.unsplash.com/photo-1599629897280-460097974002?q=80&w=2070&auto=format&fit=crop" alt="Chinese Garden" class="day-image" onerror="this.src='https://images.unsplash.com/photo-1582653380436-988a9fa93690?q=80&w=2070'">
                 <div class="day-overlay"></div>
             </div>
             <div class="day-content">
@@ -686,8 +677,8 @@
         function initTravelApp() {
             // =========================================
             // 🔧 測試模式開關
-            // true = 強制顯示 2025-11-24 為今日 (方便您現在檢查)
-            // false = 依照實際日期 (出發時請改成 false)
+            // true = 強制顯示 2025-11-24 為今日 (方便現在檢查功能)
+            // false = 依照實際日期 (出發時請改為 false)
             const testMode = true; 
             // =========================================
 
