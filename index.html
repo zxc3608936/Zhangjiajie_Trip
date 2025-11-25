@@ -23,9 +23,9 @@
             --nav-height: 60px;
             
             /* 餐食標籤顏色 */
-            --tag-bf: #f1c40f; /* 早餐黃 */
-            --tag-lh: #e67e22; /* 午餐橘 */
-            --tag-dn: #d35400; /* 晚餐紅 */
+            --tag-bf: #f1c40f;
+            --tag-lh: #e67e22;
+            --tag-dn: #d35400;
         }
 
         html { scroll-behavior: smooth; scroll-padding-top: 140px; }
@@ -164,7 +164,6 @@
         .day-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .day-card:hover .day-image { transform: scale(1.05); }
         
-        /* 圖片載入失敗時的備援樣式 */
         .day-image-fallback {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -209,7 +208,7 @@
         .hotel-phone { font-size: 0.9rem; color: var(--text-desc); margin-top: 2px; display: flex; align-items: center; gap: 5px; }
         .hotel-phone a { text-decoration: none; color: var(--secondary); font-weight: bold; }
 
-        /* 餐食樣式優化 */
+        /* 餐食樣式 */
         .meals-grid { display: grid; grid-template-columns: 1fr; gap: 8px; } 
         .meal-item { 
             display: flex; align-items: center; font-size: 0.9rem; 
@@ -465,6 +464,10 @@
                     <span class="day-date">11/26 (三)</span>
                 </div>
                 <ul class="itinerary-list">
+                    <li class="itinerary-item">
+                        <span class="spot-name">09:00 集合出發</span>
+                        <p class="spot-desc">享用早餐後，於大廳集合出發前往鳳凰古城。</p>
+                    </li>
                     <li class="itinerary-item">
                         <span class="spot-name">桃花源古鎮</span>
                         <p class="spot-desc">位於魚米之鄉常德，展現陶淵明隱世文化的大型人文主題建築群。</p>
@@ -735,7 +738,7 @@
             // 🔧 測試模式開關
             // true = 強制顯示 2025-11-24 為今日 (方便您現在檢查)
             // false = 依照實際日期 (出發時請改為 false)
-            const testMode = true; 
+            const testMode = false; 
             // =========================================
 
             const tripStartDate = new Date("2025-11-24T05:30:00").getTime();
